@@ -1,4 +1,4 @@
-const APP_VERSION = '1.1.0';
+const APP_VERSION = '1.2.0';
 const PYODIDE_VERSION = '314.0.7';
 const SHELL_CACHE = `python-forge-shell-v${APP_VERSION}`;
 const RUNTIME_CACHE = `python-forge-pyodide-${PYODIDE_VERSION}`;
@@ -8,9 +8,11 @@ const SHELL = [
   './',
   './index.html',
   './manifest.webmanifest',
-  './assets/styles.css?v=1.1.0',
-  './assets/classroom-reliability.css?v=1.1.0',
-  './assets/app.js?v=1.1.0',
+  './assets/styles.css?v=1.2.0',
+  './assets/classroom-reliability.css?v=1.2.0',
+  './assets/pedagogy.css?v=1.2.0',
+  './assets/app.js?v=1.2.0',
+  './assets/pedagogy-engine.js?v=1.2.0',
   './assets/app-shell.js',
   './assets/content.js',
   './assets/content-meta.js',
@@ -18,6 +20,9 @@ const SHELL = [
   './assets/content-p2.js',
   './assets/content-t1.js',
   './assets/content-t2.js',
+  './assets/practice-bank.js',
+  './assets/primm-bank.js',
+  './assets/capstone-bank.js',
   './assets/runtime-config.js?v=1.1.0',
   './assets/python-worker.js?v=1.1.0',
   './assets/favicon.svg'
