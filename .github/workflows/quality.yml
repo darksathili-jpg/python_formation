@@ -56,8 +56,17 @@ jobs:
           grep -q "vendor/pyodide" assets/runtime-config.js
           grep -q 'runtimeURL' assets/python-worker.js
           ! grep -q 'cdn.jsdelivr.net/pyodide' assets/python-worker.js
-          grep -q 'python-forge-pyodide-314.0.7' sw.js
+          grep -q 'python-forge-pyodide-' sw.js
+          grep -q "const PYODIDE_VERSION = '314.0.7'" sw.js
           grep -q 'lab-stdin' assets/app.js
+      - name: Verify pinned Pyodide build asset
+        run: |
+          bash scripts/fetch-pyodide.sh /tmp/python-forge-pyodide
+          test -s /tmp/python-forge-pyodide/pyodide.mjs
+          test -s /tmp/python-forge-pyodide/pyodide.asm.mjs
+          test -s /tmp/python-forge-pyodide/pyodide.asm.wasm
+          test -s /tmp/python-forge-pyodide/python_stdlib.zip
+          test -s /tmp/python-forge-pyodide/pyodide-lock.json
       - name: Required static files
         run: |
           test -s index.html
