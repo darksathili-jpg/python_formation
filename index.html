@@ -8,7 +8,8 @@
   <title>PYTHON//FORGE — NSI Première & Terminale</title>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="assets/styles.css?v=1.1.0">
+  <link rel="stylesheet" href="assets/classroom-reliability.css?v=1.1.0">
 </head>
 <body>
   <a class="skip-link" href="#main">Aller au contenu</a>
@@ -28,6 +29,10 @@
       <a href="#sources" data-route-link="sources">Sources</a>
     </nav>
     <div class="top-actions">
+      <button id="python-engine-status" class="engine-status" type="button" data-state="idle" aria-label="État du moteur Python : en veille" title="Ouvrir les diagnostics du moteur Python">
+        <span class="engine-status-dot" aria-hidden="true"></span>
+        <span class="engine-status-label">Python · veille</span>
+      </button>
       <button id="search-open" class="icon-button" type="button" aria-label="Rechercher" title="Rechercher (Ctrl+K)">⌕</button>
       <button id="theme-toggle" class="icon-button" type="button" aria-label="Changer de thème" title="Thème">◐</button>
       <button id="projector-toggle" class="icon-button" type="button" aria-label="Mode vidéoprojecteur" title="Mode vidéoprojecteur">▣</button>
@@ -58,6 +63,6 @@
     <a href="#sources">Conformité & sources</a>
   </footer>
 
-  <script type="module" src="assets/app.js"></script>
+  <script type="module" src="assets/app.js?v=1.1.0"></script>
 </body>
 </html>
