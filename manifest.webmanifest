@@ -1,0 +1,11 @@
+{
+  "name": "PYTHON//FORGE — NSI",
+  "short_name": "PYTHON//FORGE",
+  "start_url": "./#home",
+  "display": "standalone",
+  "background_color": "#071319",
+  "theme_color": "#071319",
+  "icons": [
+    {"src":"assets/favicon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
+  ]
+}
