@@ -1,10 +1,16 @@
-const CACHE = 'python-forge-shell-v1';
+const APP_VERSION = '1.1.0';
+const PYODIDE_VERSION = '314.0.7';
+const SHELL_CACHE = `python-forge-shell-v${APP_VERSION}`;
+const RUNTIME_CACHE = `python-forge-pyodide-${PYODIDE_VERSION}`;
+const RUNTIME_MARKER = `/vendor/pyodide/${PYODIDE_VERSION}/`;
+
 const SHELL = [
   './',
   './index.html',
   './manifest.webmanifest',
-  './assets/styles.css',
-  './assets/app.js',
+  './assets/styles.css?v=1.1.0',
+  './assets/classroom-reliability.css?v=1.1.0',
+  './assets/app.js?v=1.1.0',
   './assets/app-shell.js',
   './assets/content.js',
   './assets/content-meta.js',
@@ -12,36 +18,62 @@ const SHELL = [
   './assets/content-p2.js',
   './assets/content-t1.js',
   './assets/content-t2.js',
-  './assets/python-worker.js',
+  './assets/runtime-config.js?v=1.1.0',
+  './assets/python-worker.js?v=1.1.0',
   './assets/favicon.svg'
 ];
 
 self.addEventListener('install', event => {
-  event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(SHELL)).then(() => self.skipWaiting()));
+  event.waitUntil(
+    caches.open(SHELL_CACHE)
+      .then(cache => cache.addAll(SHELL))
+      .then(() => self.skipWaiting())
+  );
 });
 
 self.addEventListener('activate', event => {
   event.waitUntil(
-    caches.keys().then(keys => Promise.all(keys.filter(key => key !== CACHE).map(key => caches.delete(key))))
+    caches.keys()
+      .then(keys => Promise.all(keys
+        .filter(key => key !== SHELL_CACHE && key !== RUNTIME_CACHE)
+        .map(key => caches.delete(key))))
       .then(() => self.clients.claim())
   );
 });
 
+async function cacheFirst(request, cacheName) {
+  const cache = await caches.open(cacheName);
+  const cached = await cache.match(request);
+  if (cached) return cached;
+  const response = await fetch(request);
+  if (response.ok) await cache.put(request, response.clone());
+  return response;
+}
+
 self.addEventListener('fetch', event => {
   const request = event.request;
   if (request.method !== 'GET') return;
+
   const url = new URL(request.url);
   if (url.origin !== self.location.origin) return;
 
-  if (request.mode === 'navigate') {
-    event.respondWith(fetch(request).then(response => {
-      const copy = response.clone(); caches.open(CACHE).then(cache => cache.put('./index.html', copy)); return response;
-    }).catch(() => caches.match('./index.html')));
+  if (url.pathname.includes(RUNTIME_MARKER)) {
+    event.respondWith(cacheFirst(request, RUNTIME_CACHE));
     return;
   }
 
-  event.respondWith(caches.match(request).then(cached => cached || fetch(request).then(response => {
-    if (response.ok) { const copy = response.clone(); caches.open(CACHE).then(cache => cache.put(request, copy)); }
-    return response;
-  })));
+  if (request.mode === 'navigate') {
+    event.respondWith(
+      fetch(request)
+        .then(response => {
+          const copy = response.clone();
+          caches.open(SHELL_CACHE).then(cache => cache.put('./index.html', copy));
+          return response;
+        })
+        .catch(() => caches.match('./index.html'))
+    );
+    return;
+  }
+
+  event.respondWith(cacheFirst(request, SHELL_CACHE));
 });

@@ -27,10 +27,19 @@ jobs:
         uses: actions/configure-pages@v5
         with:
           enablement: true
+      - name: Build classroom-ready static site
+        run: |
+          rm -rf _site
+          mkdir -p _site
+          cp index.html manifest.webmanifest sw.js .nojekyll _site/
+          cp -R assets _site/assets
+          bash scripts/fetch-pyodide.sh "_site/vendor/pyodide/314.0.7"
+          test -s _site/vendor/pyodide/314.0.7/pyodide.asm.wasm
+          test -s _site/vendor/pyodide/314.0.7/python_stdlib.zip
       - name: Upload static site
         uses: actions/upload-pages-artifact@v4
         with:
-          path: '.'
+          path: '_site'
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
