@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#071319">
+  <meta name="description" content="PYTHON//FORGE — formation interactive Python pour la spécialité NSI, Première et Terminale.">
+  <title>PYTHON//FORGE — NSI Première & Terminale</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+  <canvas id="signal-canvas" aria-hidden="true"></canvas>
+
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="Retour à l'accueil">
+      <span class="brand-mark" aria-hidden="true">⌁</span>
+      <span><b>PYTHON</b><i>//FORGE</i></span>
+      <small>NSI</small>
+    </a>
+    <nav class="main-nav" aria-label="Navigation principale">
+      <a href="#home" data-route-link="home">Parcours</a>
+      <a href="#programme" data-route-link="programme">Programme</a>
+      <a href="#practice" data-route-link="practice">Entraînement</a>
+      <a href="#lab" data-route-link="lab">Python Lab</a>
+      <a href="#sources" data-route-link="sources">Sources</a>
+    </nav>
+    <div class="top-actions">
+      <button id="search-open" class="icon-button" type="button" aria-label="Rechercher" title="Rechercher (Ctrl+K)">⌕</button>
+      <button id="theme-toggle" class="icon-button" type="button" aria-label="Changer de thème" title="Thème">◐</button>
+      <button id="projector-toggle" class="icon-button" type="button" aria-label="Mode vidéoprojecteur" title="Mode vidéoprojecteur">▣</button>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section id="view" aria-live="polite"></section>
+  </main>
+
+  <dialog id="search-dialog" class="search-dialog">
+    <form method="dialog" class="search-shell">
+      <div class="search-head">
+        <label for="search-input">Rechercher un concept, un module ou un exercice</label>
+        <button value="cancel" aria-label="Fermer">×</button>
+      </div>
+      <input id="search-input" autocomplete="off" placeholder="ex. récursivité, dictionnaire, tri...">
+      <div id="search-results" class="search-results"></div>
+      <p class="keyboard-hint"><kbd>↑</kbd><kbd>↓</kbd> naviguer · <kbd>Entrée</kbd> ouvrir · <kbd>Échap</kbd> fermer</p>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <footer class="site-footer">
+    <span>PYTHON//FORGE <b>2026</b></span>
+    <span>Progression locale · aucune donnée élève envoyée</span>
+    <a href="#sources">Conformité & sources</a>
+  </footer>
+
+  <script type="module" src="assets/app.js"></script>
+</body>
+</html>

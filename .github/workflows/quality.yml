@@ -1,0 +1,53 @@
+name: Quality gate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  static-quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - name: Syntax check
+        run: |
+          node --check assets/app.js
+          node --check assets/app-shell.js
+          node --check assets/content.js
+          node --check assets/content-meta.js
+          node --check assets/content-p1.js
+          node --check assets/content-p2.js
+          node --check assets/content-t1.js
+          node --check assets/content-t2.js
+          node --check assets/python-worker.js
+          node --check sw.js
+      - name: Content integrity
+        run: |
+          node --input-type=module <<'NODE'
+          import { modules } from './assets/content.js';
+          const ids = modules.map(m => m.id);
+          const exerciseIds = modules.flatMap(m => m.exercises.map(e => e.id));
+          const expected = { premiere: 9, terminale: 11 };
+          for (const [track, count] of Object.entries(expected)) {
+            const got = modules.filter(m => m.track === track).length;
+            if (got !== count) throw new Error(`${track}: ${got} modules au lieu de ${count}`);
+          }
+          if (new Set(ids).size !== ids.length) throw new Error('Identifiants de modules dupliqués');
+          if (new Set(exerciseIds).size !== exerciseIds.length) throw new Error('Identifiants d’exercices dupliqués');
+          if (modules.some(m => m.exercises.length < 3)) throw new Error('Chaque module doit contenir au moins 3 exercices');
+          console.log(`${modules.length} modules, ${exerciseIds.length} exercices : intégrité OK`);
+          NODE
+      - name: Required static files
+        run: |
+          test -s index.html
+          test -s assets/styles.css
+          test -s manifest.webmanifest
+          grep -q 'id="view"' index.html
+          grep -q 'prefers-reduced-motion' assets/styles.css
