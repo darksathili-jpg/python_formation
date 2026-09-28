@@ -26,8 +26,10 @@ jobs:
           node --check assets/content-p2.js
           node --check assets/content-t1.js
           node --check assets/content-t2.js
+          node --check assets/runtime-config.js
           node --check assets/python-worker.js
           node --check sw.js
+          bash -n scripts/fetch-pyodide.sh
       - name: Content integrity
         run: |
           node --input-type=module <<'NODE'
@@ -44,10 +46,24 @@ jobs:
           if (modules.some(m => m.exercises.length < 3)) throw new Error('Chaque module doit contenir au moins 3 exercices');
           console.log(`${modules.length} modules, ${exerciseIds.length} exercices : intégrité OK`);
           NODE
+      - name: Classroom reliability invariants
+        run: |
+          test -s scripts/fetch-pyodide.sh
+          test -s assets/runtime-config.js
+          test -s assets/classroom-reliability.css
+          grep -q "PYODIDE_VERSION = '314.0.7'" assets/runtime-config.js
+          grep -q '2abdcc2e35208af406e07724cffa85bc582ced97e9028383ecf5462541393f95' scripts/fetch-pyodide.sh
+          grep -q "vendor/pyodide" assets/runtime-config.js
+          grep -q 'runtimeURL' assets/python-worker.js
+          ! grep -q 'cdn.jsdelivr.net/pyodide' assets/python-worker.js
+          grep -q 'python-forge-pyodide-314.0.7' sw.js
+          grep -q 'lab-stdin' assets/app.js
       - name: Required static files
         run: |
           test -s index.html
           test -s assets/styles.css
           test -s manifest.webmanifest
           grep -q 'id="view"' index.html
+          grep -q 'id="python-engine-status"' index.html
           grep -q 'prefers-reduced-motion' assets/styles.css
+          grep -q 'prefers-reduced-motion' assets/classroom-reliability.css
