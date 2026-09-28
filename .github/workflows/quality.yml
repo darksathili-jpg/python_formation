@@ -26,26 +26,42 @@ jobs:
           node --check assets/content-p2.js
           node --check assets/content-t1.js
           node --check assets/content-t2.js
+          node --check assets/practice-bank.js
+          node --check assets/primm-bank.js
+          node --check assets/capstone-bank.js
+          node --check assets/pedagogy-engine.js
           node --check assets/runtime-config.js
           node --check assets/python-worker.js
+          node --check scripts/validate-exercises.mjs
           node --check sw.js
           bash -n scripts/fetch-pyodide.sh
       - name: Content integrity
         run: |
           node --input-type=module <<'NODE'
-          import { modules } from './assets/content.js';
+          import { modules, practiceBank, primmBank, capstones } from './assets/content.js';
           const ids = modules.map(m => m.id);
-          const exerciseIds = modules.flatMap(m => m.exercises.map(e => e.id));
+          const coreIds = modules.flatMap(m => m.exercises.map(e => e.id));
           const expected = { premiere: 9, terminale: 11 };
           for (const [track, count] of Object.entries(expected)) {
             const got = modules.filter(m => m.track === track).length;
             if (got !== count) throw new Error(`${track}: ${got} modules au lieu de ${count}`);
           }
           if (new Set(ids).size !== ids.length) throw new Error('Identifiants de modules dupliqués');
-          if (new Set(exerciseIds).size !== exerciseIds.length) throw new Error('Identifiants d’exercices dupliqués');
-          if (modules.some(m => m.exercises.length < 3)) throw new Error('Chaque module doit contenir au moins 3 exercices');
-          console.log(`${modules.length} modules, ${exerciseIds.length} exercices : intégrité OK`);
+          if (new Set(coreIds).size !== coreIds.length) throw new Error('Identifiants d’exercices cœur dupliqués');
+          if (modules.some(m => m.exercises.length < 3)) throw new Error('Chaque module doit contenir au moins 3 exercices cœur');
+          if (practiceBank.length !== 100) throw new Error(`Banque: ${practiceBank.length} au lieu de 100`);
+          if (primmBank.length !== 20) throw new Error(`PRIMM: ${primmBank.length} au lieu de 20`);
+          if (capstones.length !== 4) throw new Error(`Applications: ${capstones.length} au lieu de 4`);
+          console.log(`${modules.length} modules, ${coreIds.length} cœur + ${practiceBank.length} entraînements + ${capstones.length} applications : structure OK`);
           NODE
+      - name: Pedagogy engine gate
+        run: |
+          node scripts/validate-exercises.mjs
+          grep -q 'NSI accessible sans spécialité mathématiques' assets/pedagogy-engine.js
+          grep -q 'Tremplin Parsons' assets/pedagogy-engine.js
+          grep -q 'Atelier PRIMM' assets/pedagogy-engine.js
+          grep -q 'Réactivation espacée' assets/pedagogy-engine.js
+          grep -q 'session 2027' assets/pedagogy-engine.js
       - name: Classroom reliability invariants
         run: |
           test -s scripts/fetch-pyodide.sh
@@ -71,8 +87,12 @@ jobs:
         run: |
           test -s index.html
           test -s assets/styles.css
+          test -s assets/pedagogy.css
           test -s manifest.webmanifest
           grep -q 'id="view"' index.html
           grep -q 'id="python-engine-status"' index.html
+          grep -q 'pedagogy-engine.js' index.html
+          grep -q 'practice-bank.js' sw.js
           grep -q 'prefers-reduced-motion' assets/styles.css
           grep -q 'prefers-reduced-motion' assets/classroom-reliability.css
+          grep -q 'prefers-reduced-motion' assets/pedagogy.css
