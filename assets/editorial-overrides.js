@@ -12,10 +12,14 @@ const RESULT_OVERRIDES = {
 };
 
 const PARAM_OVERRIDES = {
+  'P1-X4':{
+    effectif:'nombre total d’éléments disponibles avant de former les groupes complets',
+    taille:'nombre d’éléments que doit contenir chaque groupe complet ; cette valeur est strictement positive'
+  },
   'P2-E1':{
-    x:'valeur numérique dont on vérifie l’appartenance à l’intervalle fermé [a ; b]',
-    a:'borne gauche de l’intervalle fermé ; cette borne est incluse',
-    b:'borne droite de l’intervalle fermé ; cette borne est incluse'
+    x:'valeur numérique dont on vérifie qu’elle est comprise entre les deux bornes incluses a et b',
+    a:'borne gauche ; elle est incluse dans les valeurs acceptées',
+    b:'borne droite ; elle est incluse dans les valeurs acceptées'
   },
   'P3-E2':{
     valeurs:'liste dans laquelle on veut compter le nombre d’occurrences de la valeur cible',
