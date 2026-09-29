@@ -34,6 +34,7 @@ jobs:
           node --check assets/novice-bank.js
           node --check assets/novice-overrides.js
           node --check assets/student-zero-p1p2.js
+          node --check assets/student-zero-p3p4.js
           node --check assets/novice-gate.js
           node --check assets/exercise-brief.js
           node --check assets/statement-enhancer.js
@@ -42,6 +43,7 @@ jobs:
           node --check scripts/validate-exercises.mjs
           node --check scripts/validate-novice.mjs
           node --check scripts/validate-student-zero.mjs
+          node --check scripts/validate-student-zero-p3p4.mjs
           node --check scripts/validate-contrast.mjs
           node --check scripts/validate-statements.mjs
           node --check sw.js
@@ -91,6 +93,14 @@ jobs:
           grep -q 'student-zero-p1p2.js' sw.js
           grep -q 'Pourquoi vois-tu déjà def et return' assets/student-zero-p1p2.js
           grep -q 'Méthode anti-erreur pour les frontières' assets/student-zero-p1p2.js
+      - name: Student Zero P3/P4 gate
+        run: |
+          node scripts/validate-student-zero-p3p4.mjs
+          test -s assets/student-zero-p3p4.js
+          grep -q 'applyStudentZeroP3P4' assets/content.js
+          grep -q 'student-zero-p3p4.js' sw.js
+          grep -q 'Dans P3, le cadre def / return reste fourni' assets/student-zero-p3p4.js
+          grep -q 'Méthode P4 : contrat → signature → corps → tests' assets/student-zero-p3p4.js
       - name: Editorial statement gate
         run: |
           node scripts/validate-statements.mjs
@@ -101,16 +111,16 @@ jobs:
           grep -q 'Valeur ou effet attendu' assets/exercise-brief.js
           grep -q 'Erreur classique à éviter' assets/exercise-brief.js
           grep -q 'Exemples contrôlés' assets/exercise-brief.js
-          grep -q 'statement-enhancer.js?v=1.8.0' index.html
-          grep -q 'exercise-brief.css?v=1.8.0' index.html
-          grep -q 'statement-enhancer.js?v=1.8.0' sw.js
+          grep -q 'statement-enhancer.js?v=1.9.0' index.html
+          grep -q 'exercise-brief.css?v=1.9.0' index.html
+          grep -q 'statement-enhancer.js?v=1.9.0' sw.js
           ! grep -q 'Le résultat renvoyé ou affiché doit respecter exactement la règle décrite' assets/exercise-brief.js
       - name: Visual contrast gate
         run: |
           node scripts/validate-contrast.mjs
           test -s assets/visual-contrast.css
-          grep -q 'visual-contrast.css?v=1.8.0' index.html
-          grep -q 'visual-contrast.css?v=1.8.0' sw.js
+          grep -q 'visual-contrast.css?v=1.9.0' index.html
+          grep -q 'visual-contrast.css?v=1.9.0' sw.js
           grep -q 'projector mode is a dedicated high-luminance palette' assets/visual-contrast.css
       - name: Classroom reliability invariants
         run: |
@@ -144,6 +154,7 @@ jobs:
           test -s assets/novice-bank.js
           test -s assets/novice-overrides.js
           test -s assets/student-zero-p1p2.js
+          test -s assets/student-zero-p3p4.js
           test -s assets/branding.css
           test -s assets/branding/logo-watteau.jpg
           test -s assets/visual-contrast.css
@@ -167,6 +178,7 @@ jobs:
           grep -q 'statement-enhancer.js' sw.js
           grep -q 'exercise-brief.js' sw.js
           grep -q 'student-zero-p1p2.js' sw.js
+          grep -q 'student-zero-p3p4.js' sw.js
           grep -q 'logo-watteau.jpg' sw.js
           grep -q 'visual-contrast.css' sw.js
           grep -q 'prefers-reduced-motion' assets/styles.css
