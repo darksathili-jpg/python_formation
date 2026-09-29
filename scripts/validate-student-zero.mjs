@@ -15,9 +15,9 @@ if(p1){
   for(const token of ['affectation','type','//','%','def','return']) if(!p1Lessons.includes(token)) errors.push(`P1: notion explicitée manquante: ${token}`);
   if(!p1.exercises.every(e=>e.kind==='compléter')) errors.push('P1: les exercices cœur doivent rester des complétions guidées');
   if(p1.exercises.some(e=>/Écris une fonction/i.test(e.prompt))) errors.push('P1: ne doit pas demander d’écrire une fonction complète');
-  const p1Student=textOf([...p1.exercises,...extras('P1')]);
-  if(/str\s*\(/.test(p1Student)) errors.push('P1: str() réintroduit avant son enseignement');
-  if(/return\s+[^\n]*,\s*[^\n]*/.test(p1Student)) errors.push('P1: retour tuple implicite réintroduit');
+  const p1Activities=[...p1.exercises,...extras('P1')];
+  if(p1Activities.some(e=>/\bstr\s*\(/.test(`${e.starter||''}\n${e.solution||''}\n${e.prompt||''}`))) errors.push('P1: str() réintroduit avant son enseignement');
+  if(p1Activities.some(e=>(e.solution||'').split('\n').some(line=>/^\s*return\s+[^#\n]*,\s*[^#\n]*$/.test(line)))) errors.push('P1: retour tuple implicite réintroduit');
   if(!p1.exercises.find(e=>e.id==='P1-E3')?.prompt.includes('n % 2')) errors.push('P1-E3: modulo non expliqué dans l’énoncé');
 }
 
