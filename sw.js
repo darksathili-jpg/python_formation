@@ -21,6 +21,7 @@ const SHELL = [
   './assets/novice-gate.js?v=1.7.0',
   './assets/statement-enhancer.js?v=1.7.0',
   './assets/exercise-brief.js',
+  './assets/editorial-overrides.js',
   './assets/app-shell.js',
   './assets/content.js',
   './assets/content-meta.js',
