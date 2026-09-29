@@ -81,24 +81,26 @@ jobs:
           grep -q 'def.*return' assets/novice-bank.js
           grep -q 'novice-gate.js' index.html
           grep -q 'novice-bank.js' sw.js
-      - name: Statement quality gate
+      - name: Editorial statement gate
         run: |
           node scripts/validate-statements.mjs
           test -s assets/exercise-brief.js
           test -s assets/exercise-brief.css
           test -s assets/statement-enhancer.js
-          grep -q 'Contrat du programme' assets/exercise-brief.js
-          grep -q 'Avant de coder' assets/exercise-brief.js
-          grep -q 'Cas que la validation vérifie' assets/exercise-brief.js
-          grep -q 'statement-enhancer.js?v=1.6.0' index.html
-          grep -q 'exercise-brief.css?v=1.6.0' index.html
-          grep -q 'statement-enhancer.js?v=1.6.0' sw.js
+          grep -q 'Ce que tu dois réellement faire' assets/exercise-brief.js
+          grep -q 'Valeur ou effet attendu' assets/exercise-brief.js
+          grep -q 'Erreur classique à éviter' assets/exercise-brief.js
+          grep -q 'Exemples contrôlés' assets/exercise-brief.js
+          grep -q 'statement-enhancer.js?v=1.7.0' index.html
+          grep -q 'exercise-brief.css?v=1.7.0' index.html
+          grep -q 'statement-enhancer.js?v=1.7.0' sw.js
+          ! grep -q 'Le résultat renvoyé ou affiché doit respecter exactement la règle décrite' assets/exercise-brief.js
       - name: Visual contrast gate
         run: |
           node scripts/validate-contrast.mjs
           test -s assets/visual-contrast.css
-          grep -q 'visual-contrast.css?v=1.6.0' index.html
-          grep -q 'visual-contrast.css?v=1.6.0' sw.js
+          grep -q 'visual-contrast.css?v=1.7.0' index.html
+          grep -q 'visual-contrast.css?v=1.7.0' sw.js
           grep -q 'projector mode is a dedicated high-luminance palette' assets/visual-contrast.css
       - name: Classroom reliability invariants
         run: |
