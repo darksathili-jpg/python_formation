@@ -31,15 +31,19 @@ jobs:
           node --check assets/capstone-bank.js
           node --check assets/pedagogy-bootstrap.js
           node --check assets/pedagogy-engine.js
+          node --check assets/novice-bank.js
+          node --check assets/novice-overrides.js
+          node --check assets/novice-gate.js
           node --check assets/runtime-config.js
           node --check assets/python-worker.js
           node --check scripts/validate-exercises.mjs
+          node --check scripts/validate-novice.mjs
           node --check sw.js
           bash -n scripts/fetch-pyodide.sh
       - name: Content integrity
         run: |
           node --input-type=module <<'NODE'
-          import { modules, practiceBank, primmBank, capstones } from './assets/content.js';
+          import { modules, practiceBank, primmBank, capstones, noviceBank } from './assets/content.js';
           const ids = modules.map(m => m.id);
           const coreIds = modules.flatMap(m => m.exercises.map(e => e.id));
           const expected = { premiere: 9, terminale: 11 };
@@ -53,7 +57,8 @@ jobs:
           if (practiceBank.length !== 100) throw new Error(`Banque: ${practiceBank.length} au lieu de 100`);
           if (primmBank.length !== 20) throw new Error(`PRIMM: ${primmBank.length} au lieu de 20`);
           if (capstones.length !== 4) throw new Error(`Applications: ${capstones.length} au lieu de 4`);
-          console.log(`${modules.length} modules, ${coreIds.length} cœur + ${practiceBank.length} entraînements + ${capstones.length} applications : structure OK`);
+          if (noviceBank.length !== 20) throw new Error(`Passerelles novice: ${noviceBank.length} au lieu de 20`);
+          console.log(`${modules.length} modules, ${coreIds.length} cœur + ${practiceBank.length} entraînements + ${capstones.length} applications + ${noviceBank.length} passerelles : structure OK`);
           NODE
       - name: Pedagogy engine gate
         run: |
@@ -64,6 +69,14 @@ jobs:
           grep -q 'Réactivation espacée' assets/pedagogy-engine.js
           grep -q 'session 2027' assets/pedagogy-engine.js
           grep -q 'capstoneEnhancementHash' assets/pedagogy-bootstrap.js
+      - name: Novice learning gate
+        run: |
+          node scripts/validate-novice.mjs
+          grep -q 'Avant de coder : construire le bon modèle mental' assets/novice-gate.js
+          grep -q 'Coach de débogage' assets/novice-gate.js
+          grep -q 'def.*return' assets/novice-bank.js
+          grep -q 'novice-gate.js' index.html
+          grep -q 'novice-bank.js' sw.js
       - name: Classroom reliability invariants
         run: |
           test -s scripts/fetch-pyodide.sh
@@ -91,13 +104,20 @@ jobs:
           test -s assets/styles.css
           test -s assets/pedagogy.css
           test -s assets/pedagogy-bootstrap.js
+          test -s assets/novice-gate.css
+          test -s assets/novice-gate.js
+          test -s assets/novice-bank.js
+          test -s assets/novice-overrides.js
           test -s manifest.webmanifest
           grep -q 'id="view"' index.html
           grep -q 'id="python-engine-status"' index.html
           grep -q 'pedagogy-bootstrap.js' index.html
           grep -q 'pedagogy-engine.js' index.html
+          grep -q 'novice-gate.js' index.html
           grep -q 'pedagogy-bootstrap.js' sw.js
           grep -q 'practice-bank.js' sw.js
+          grep -q 'novice-gate.js' sw.js
           grep -q 'prefers-reduced-motion' assets/styles.css
           grep -q 'prefers-reduced-motion' assets/classroom-reliability.css
           grep -q 'prefers-reduced-motion' assets/pedagogy.css
+          grep -q 'prefers-reduced-motion' assets/novice-gate.css
