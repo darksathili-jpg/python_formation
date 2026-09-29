@@ -12,6 +12,7 @@ const SHELL = [
   './assets/classroom-reliability.css?v=1.2.0',
   './assets/pedagogy.css?v=1.2.0',
   './assets/app.js?v=1.2.0',
+  './assets/pedagogy-bootstrap.js?v=1.2.0',
   './assets/pedagogy-engine.js?v=1.2.0',
   './assets/app-shell.js',
   './assets/content.js',
