@@ -20,4 +20,6 @@ applyStudentZeroP3P4(modules, practiceBank, primmBank, noviceBank);
 applyStudentZeroP5P6(modules, practiceBank, primmBank, noviceBank);
 applyStudentZeroP7P8(modules, practiceBank, primmBank, noviceBank);
 applyStudentZeroP8P9(modules, practiceBank, primmBank, noviceBank);
+const noviceP9 = noviceBank.find(item => item.moduleId === 'P9');
+if (noviceP9 && noviceP9.checks.length > 3) noviceP9.checks = noviceP9.checks.slice(0, 3);
 export { practiceBank, primmBank, capstones, noviceBank };
