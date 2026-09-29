@@ -1,11 +1,13 @@
 {
-  "name": "PYTHON//FORGE — NSI",
+  "name": "PYTHON//FORGE — NSI · Lycée Watteau",
   "short_name": "PYTHON//FORGE",
+  "description": "Formation interactive Python pour la spécialité NSI au Lycée Watteau de Valenciennes.",
   "start_url": "./#home",
   "display": "standalone",
   "background_color": "#071319",
   "theme_color": "#071319",
   "icons": [
+    {"src":"assets/branding/logo-watteau.jpg","sizes":"80x80","type":"image/jpeg","purpose":"any"},
     {"src":"assets/favicon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
   ]
 }

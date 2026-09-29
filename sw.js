@@ -1,4 +1,4 @@
-const APP_VERSION = '1.3.0';
+const APP_VERSION = '1.4.0';
 const PYODIDE_VERSION = '314.0.7';
 const SHELL_CACHE = `python-forge-shell-v${APP_VERSION}`;
 const RUNTIME_CACHE = `python-forge-pyodide-${PYODIDE_VERSION}`;
@@ -8,14 +8,15 @@ const SHELL = [
   './',
   './index.html',
   './manifest.webmanifest',
-  './assets/styles.css?v=1.3.0',
-  './assets/classroom-reliability.css?v=1.3.0',
-  './assets/pedagogy.css?v=1.3.0',
-  './assets/novice-gate.css?v=1.3.0',
-  './assets/app.js?v=1.3.0',
-  './assets/pedagogy-bootstrap.js?v=1.3.0',
-  './assets/pedagogy-engine.js?v=1.3.0',
-  './assets/novice-gate.js?v=1.3.0',
+  './assets/styles.css?v=1.4.0',
+  './assets/classroom-reliability.css?v=1.4.0',
+  './assets/pedagogy.css?v=1.4.0',
+  './assets/novice-gate.css?v=1.4.0',
+  './assets/branding.css?v=1.4.0',
+  './assets/app.js?v=1.4.0',
+  './assets/pedagogy-bootstrap.js?v=1.4.0',
+  './assets/pedagogy-engine.js?v=1.4.0',
+  './assets/novice-gate.js?v=1.4.0',
   './assets/app-shell.js',
   './assets/content.js',
   './assets/content-meta.js',
@@ -30,6 +31,7 @@ const SHELL = [
   './assets/novice-overrides.js',
   './assets/runtime-config.js?v=1.1.0',
   './assets/python-worker.js?v=1.1.0',
+  './assets/branding/logo-watteau.jpg',
   './assets/favicon.svg'
 ];
 
