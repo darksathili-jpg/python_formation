@@ -5,14 +5,15 @@ const p5 = modules.find(m => m.id === 'P5');
 const p6 = modules.find(m => m.id === 'P6');
 const get = (list, id) => list.find(x => x.id === id);
 const getModule = (list, id) => list.find(x => x.moduleId === id);
+const lessonText = lessons => lessons.map(l => `${l.title} ${l.html} ${(l.points || []).join(' ')}`).join('\n');
 
 if (!p5 || !p6) errors.push('P5 ou P6 introuvable');
 
 if (p5) {
   if (p5.exercises.length !== 3) errors.push(`P5: ${p5.exercises.length} exercices cœur au lieu de 3`);
-  const lessonText = p5.lessons.map(l => `${l.title} ${l.html}`).join('\n');
+  const text = lessonText(p5.lessons);
   for (const marker of ['séquence de caractères indexée à partir de 0','ne se modifie pas par indice','Parcourir directement ou utiliser les indices','Aucune slice n’est nécessaire']) {
-    if (!lessonText.includes(marker)) errors.push(`P5: notion manquante — ${marker}`);
+    if (!text.includes(marker)) errors.push(`P5: notion manquante — ${marker}`);
   }
   const p5all = [...p5.exercises, ...practiceBank.filter(x => x.moduleId === 'P5')];
   for (const ex of p5all) {
@@ -27,9 +28,9 @@ if (p5) {
 
 if (p6) {
   if (p6.exercises.length !== 3) errors.push(`P6: ${p6.exercises.length} exercices cœur au lieu de 3`);
-  const lessonText = p6.lessons.map(l => `${l.title} ${l.html}`).join('\n');
+  const text = lessonText(p6.lessons);
   for (const marker of ['Transition P5 → P6','Alias : deux noms peuvent désigner la même liste','Copier : créer une nouvelle liste','Compréhension : compacter un schéma déjà compris','Tableau 2D']) {
-    if (!lessonText.includes(marker)) errors.push(`P6: notion manquante — ${marker}`);
+    if (!text.includes(marker)) errors.push(`P6: notion manquante — ${marker}`);
   }
   const e1 = get(p6.exercises, 'P6-E1');
   if (!e1 || !/\[.*for i in range\(n\)\]/s.test(e1.solution)) errors.push('P6-E1: compréhension simple absente de la solution');
