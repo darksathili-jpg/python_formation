@@ -34,11 +34,14 @@ jobs:
           node --check assets/novice-bank.js
           node --check assets/novice-overrides.js
           node --check assets/novice-gate.js
+          node --check assets/exercise-brief.js
+          node --check assets/statement-enhancer.js
           node --check assets/runtime-config.js
           node --check assets/python-worker.js
           node --check scripts/validate-exercises.mjs
           node --check scripts/validate-novice.mjs
           node --check scripts/validate-contrast.mjs
+          node --check scripts/validate-statements.mjs
           node --check sw.js
           bash -n scripts/fetch-pyodide.sh
       - name: Content integrity
@@ -78,12 +81,24 @@ jobs:
           grep -q 'def.*return' assets/novice-bank.js
           grep -q 'novice-gate.js' index.html
           grep -q 'novice-bank.js' sw.js
+      - name: Statement quality gate
+        run: |
+          node scripts/validate-statements.mjs
+          test -s assets/exercise-brief.js
+          test -s assets/exercise-brief.css
+          test -s assets/statement-enhancer.js
+          grep -q 'Contrat du programme' assets/exercise-brief.js
+          grep -q 'Avant de coder' assets/exercise-brief.js
+          grep -q 'Cas que la validation vérifie' assets/exercise-brief.js
+          grep -q 'statement-enhancer.js?v=1.6.0' index.html
+          grep -q 'exercise-brief.css?v=1.6.0' index.html
+          grep -q 'statement-enhancer.js?v=1.6.0' sw.js
       - name: Visual contrast gate
         run: |
           node scripts/validate-contrast.mjs
           test -s assets/visual-contrast.css
-          grep -q 'visual-contrast.css?v=1.5.0' index.html
-          grep -q 'visual-contrast.css?v=1.5.0' sw.js
+          grep -q 'visual-contrast.css?v=1.6.0' index.html
+          grep -q 'visual-contrast.css?v=1.6.0' sw.js
           grep -q 'projector mode is a dedicated high-luminance palette' assets/visual-contrast.css
       - name: Classroom reliability invariants
         run: |
@@ -119,18 +134,25 @@ jobs:
           test -s assets/branding.css
           test -s assets/branding/logo-watteau.jpg
           test -s assets/visual-contrast.css
+          test -s assets/exercise-brief.css
+          test -s assets/exercise-brief.js
+          test -s assets/statement-enhancer.js
           test -s manifest.webmanifest
           grep -q 'id="view"' index.html
           grep -q 'id="python-engine-status"' index.html
           grep -q 'pedagogy-bootstrap.js' index.html
           grep -q 'pedagogy-engine.js' index.html
           grep -q 'novice-gate.js' index.html
+          grep -q 'statement-enhancer.js' index.html
           grep -q 'logo-watteau.jpg' index.html
           grep -q 'branding.css' index.html
           grep -q 'visual-contrast.css' index.html
+          grep -q 'exercise-brief.css' index.html
           grep -q 'pedagogy-bootstrap.js' sw.js
           grep -q 'practice-bank.js' sw.js
           grep -q 'novice-gate.js' sw.js
+          grep -q 'statement-enhancer.js' sw.js
+          grep -q 'exercise-brief.js' sw.js
           grep -q 'logo-watteau.jpg' sw.js
           grep -q 'visual-contrast.css' sw.js
           grep -q 'prefers-reduced-motion' assets/styles.css
