@@ -39,6 +39,7 @@ jobs:
           node --check assets/student-zero-p7p8.js
           node --check assets/student-zero-p8p9.js
           node --check assets/student-zero-p9t1.js
+          node --check assets/student-zero-t1t2.js
           node --check assets/novice-gate.js
           node --check assets/exercise-brief.js
           node --check assets/statement-enhancer.js
@@ -52,6 +53,7 @@ jobs:
           node --check scripts/validate-student-zero-p7p8.mjs
           node --check scripts/validate-student-zero-p8p9.mjs
           node --check scripts/validate-student-zero-p9t1.mjs
+          node --check scripts/validate-student-zero-t1t2.mjs
           node --check scripts/validate-contrast.mjs
           node --check scripts/validate-statements.mjs
           node --check sw.js
@@ -146,6 +148,17 @@ jobs:
           grep -q 'Descente : chaque appel attend le suivant' assets/student-zero-p9t1.js
           grep -q 'Remontée : les résultats reviennent en sens inverse' assets/student-zero-p9t1.js
           grep -q 'Récursion sur une séquence sans slice' assets/student-zero-p9t1.js
+      - name: Student Zero T1/T2 gate
+        run: |
+          node scripts/validate-student-zero-t1t2.mjs
+          test -s assets/student-zero-t1t2.js
+          grep -q 'applyStudentZeroT1T2' assets/content.js
+          grep -q 'student-zero-t1t2.js' sw.js
+          grep -q 'Transition T1 → T2' assets/student-zero-t1t2.js
+          grep -q 'Classe ≠ objet' assets/student-zero-t1t2.js
+          grep -q 'self désigne l’objet courant' assets/student-zero-t1t2.js
+          grep -q 'Variable locale ≠ attribut' assets/student-zero-t1t2.js
+          grep -q 'héritage et le polymorphisme' assets/student-zero-t1t2.js
       - name: Editorial statement gate
         run: |
           node scripts/validate-statements.mjs
@@ -156,16 +169,16 @@ jobs:
           grep -q 'Valeur ou effet attendu' assets/exercise-brief.js
           grep -q 'Erreur classique à éviter' assets/exercise-brief.js
           grep -q 'Exemples contrôlés' assets/exercise-brief.js
-          grep -q 'statement-enhancer.js?v=1.13.0' index.html
-          grep -q 'exercise-brief.css?v=1.13.0' index.html
-          grep -q 'statement-enhancer.js?v=1.13.0' sw.js
+          grep -q 'statement-enhancer.js?v=1.14.0' index.html
+          grep -q 'exercise-brief.css?v=1.14.0' index.html
+          grep -q 'statement-enhancer.js?v=1.14.0' sw.js
           ! grep -q 'Le résultat renvoyé ou affiché doit respecter exactement la règle décrite' assets/exercise-brief.js
       - name: Visual contrast gate
         run: |
           node scripts/validate-contrast.mjs
           test -s assets/visual-contrast.css
-          grep -q 'visual-contrast.css?v=1.13.0' index.html
-          grep -q 'visual-contrast.css?v=1.13.0' sw.js
+          grep -q 'visual-contrast.css?v=1.14.0' index.html
+          grep -q 'visual-contrast.css?v=1.14.0' sw.js
           grep -q 'projector mode is a dedicated high-luminance palette' assets/visual-contrast.css
       - name: Classroom reliability invariants
         run: |
@@ -204,6 +217,7 @@ jobs:
           test -s assets/student-zero-p7p8.js
           test -s assets/student-zero-p8p9.js
           test -s assets/student-zero-p9t1.js
+          test -s assets/student-zero-t1t2.js
           test -s assets/branding.css
           test -s assets/branding/logo-watteau.jpg
           test -s assets/visual-contrast.css
@@ -232,6 +246,7 @@ jobs:
           grep -q 'student-zero-p7p8.js' sw.js
           grep -q 'student-zero-p8p9.js' sw.js
           grep -q 'student-zero-p9t1.js' sw.js
+          grep -q 'student-zero-t1t2.js' sw.js
           grep -q 'logo-watteau.jpg' sw.js
           grep -q 'visual-contrast.css' sw.js
           grep -q 'prefers-reduced-motion' assets/styles.css
