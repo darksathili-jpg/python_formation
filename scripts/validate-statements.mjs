@@ -1,5 +1,5 @@
 import { modules, practiceBank, capstones } from '../assets/content.js';
-import { buildExerciseBrief, exerciseBriefHTML } from '../assets/exercise-brief.js';
+import { buildEditorialBrief, exerciseEditorialBriefHTML } from '../assets/editorial-overrides.js';
 
 const moduleById = new Map(modules.map(m=>[m.id,m]));
 const all = [
@@ -13,8 +13,8 @@ const genericParam = /paramètre fourni|rôle est précisé|signification est do
 const genericResult = /respecter exactement la règle décrite|résultat renvoyé ou affiché/i;
 
 for(const {ex,module} of all){
-  const b=buildExerciseBrief(ex,module);
-  const html=exerciseBriefHTML(ex,module);
+  const b=buildEditorialBrief(ex,module);
+  const html=exerciseEditorialBriefHTML(ex,module);
   if(!b.task || b.task.length<18) errors.push(`${ex.id}: mission trop courte (${b.task.length})`);
   if(!b.narrative || b.narrative.length<90) errors.push(`${ex.id}: reformulation éditoriale insuffisante`);
   if(!b.resultRule || b.resultRule.length<45 || genericResult.test(b.resultRule)) errors.push(`${ex.id}: résultat attendu trop générique`);
@@ -23,7 +23,6 @@ for(const {ex,module} of all){
   if(!b.mistake || b.mistake.length<45) errors.push(`${ex.id}: erreur classique non explicitée`);
   if(!b.examples.length) errors.push(`${ex.id}: aucun cas de validation explicité`);
   if(b.params.some(p=>!p.description || p.description.length<24)) errors.push(`${ex.id}: description de paramètre trop courte`);
-  // Generic fallback remains acceptable only when the mission itself names the parameter explicitly.
   for(const p of b.params){
     if(genericParam.test(p.description) && !new RegExp(`\\b${p.name}\\b`).test(b.task)) {
       errors.push(`${ex.id}: paramètre ${p.name} insuffisamment documenté`);
