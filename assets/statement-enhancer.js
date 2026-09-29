@@ -1,5 +1,5 @@
 import { modules, practiceBank, capstones } from './content.js';
-import { exerciseBriefHTML } from './exercise-brief.js';
+import { exerciseEditorialBriefHTML } from './editorial-overrides.js';
 
 const view = document.querySelector('#view');
 const moduleById = new Map(modules.map(m=>[m.id,m]));
@@ -24,8 +24,9 @@ function enhanceStatements(){
       prompt.setAttribute('aria-hidden','true');
     }
     const target=body.querySelector('.exercise-grid');
-    if(target) target.insertAdjacentHTML('beforebegin',exerciseBriefHTML(found.ex,found.module));
-    else body.insertAdjacentHTML('afterbegin',exerciseBriefHTML(found.ex,found.module));
+    const detailed=exerciseEditorialBriefHTML(found.ex,found.module);
+    if(target) target.insertAdjacentHTML('beforebegin',detailed);
+    else body.insertAdjacentHTML('afterbegin',detailed);
   }
 }
 function queueEnhance(){if(queued)return;queued=true;queueMicrotask(enhanceStatements)}
