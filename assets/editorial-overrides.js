@@ -31,6 +31,24 @@ const PARAM_OVERRIDES = {
   'P6-X3':{
     objet:'nouvel élément à ajouter uniquement dans la copie de l’inventaire ; la liste inventaire reçue doit rester inchangée'
   },
+  'P7-X2':{
+    fichiers:'liste de chaînes contenant déjà les extensions à compter, par exemple ["py", "html", "py"] ; aucune extraction depuis des noms de fichiers complets n’est demandée'
+  },
+  'P7-X3':{
+    scores:'dictionnaire associant le nom de chaque joueur à son score actuel',
+    joueur:'nom du joueur dont le score doit être augmenté ; ce nom sert de clé dans scores',
+    points:'nombre de points à ajouter au score actuel du joueur'
+  },
+  'P7-X5':{
+    categories:'liste non vide de chaînes représentant les catégories observées ; en cas d’égalité de fréquence, la première catégorie rencontrée doit être conservée'
+  },
+  'P8-X1':{
+    texte_csv:'chaîne contenant le texte CSV complet, avec une première ligne d’en-têtes ; les champs lus par DictReader restent des chaînes de caractères'
+  },
+  'P8-X5':{
+    eleves:'table représentée par une liste de dictionnaires ; chaque ligne possède au minimum les champs id et nom',
+    badges:'seconde table représentée par une liste de dictionnaires ; chaque ligne possède au minimum les champs id et badge, avec des id comparables à ceux de eleves'
+  },
   'T1-E2':{
     tab:'liste dans laquelle la fonction récursive compte les occurrences de x sans utiliser de slice',
     x:'valeur dont on veut compter le nombre d’occurrences dans tab',
@@ -63,11 +81,6 @@ const PARAM_OVERRIDES = {
     longueur:'nombre de caractères du mot de passe à vérifier',
     chiffre:'booléen indiquant si le mot de passe contient au moins un chiffre',
     interdit:'booléen indiquant si le mot de passe est marqué comme interdit'
-  },
-  'P7-X3':{
-    scores:'dictionnaire associant le nom de chaque joueur à son score actuel',
-    joueur:'nom du joueur dont le score doit être augmenté ; ce nom sert de clé dans scores',
-    points:'nombre de points à ajouter au score actuel du joueur'
   },
   'T3-X5':{
     ticket:'ticket à placer dans la file ; les tickets doivent ressortir dans leur ordre d’arrivée'
