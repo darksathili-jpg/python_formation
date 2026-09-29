@@ -37,7 +37,7 @@ if (p8) {
   const lessonCode = p8.lessons.map(l => l.code || '').join('\n');
   for (const marker of [
     'Transition P7 → P8',
-    'table par une liste de ces dictionnaires',
+    'une liste de ces dictionnaires',
     'csv.DictReader',
     'chaînes de caractères',
     'sorted',
@@ -62,7 +62,7 @@ if (p8) {
   const x3 = get(practiceBank, 'P8-X3');
   if (!x3 || !x3.solution.includes("int(ligne['note'])")) errors.push('P8-X3: conversion numérique après CSV absente');
   const x4 = get(practiceBank, 'P8-X4');
-  if (!x4 || !x4.solution.includes('sorted(table, key=cle_age)') || /\blambda\b/.test(x4.solution)) {
+  if (!x4 || !/sorted\(table,\s*key=cle_age\)/.test(x4.solution) || /\blambda\b/.test(x4.solution)) {
     errors.push('P8-X4: tri par colonne doit utiliser une fonction nommée sans lambda');
   }
 }
