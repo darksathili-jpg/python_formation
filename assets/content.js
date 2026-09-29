@@ -9,5 +9,5 @@ import noviceBank from './novice-bank.js';
 import { applyNoviceContentFixes } from './novice-overrides.js';
 export { SITE_VERSION, tracks, flashQuestions, sources, scopeNotes } from './content-meta.js';
 export const modules = [...p1, ...p2, ...t1, ...t2];
-applyNoviceContentFixes(modules, practiceBank);
+applyNoviceContentFixes(modules, practiceBank, noviceBank);
 export { practiceBank, primmBank, capstones, noviceBank };
