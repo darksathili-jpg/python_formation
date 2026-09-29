@@ -9,6 +9,12 @@ const RESULT_OVERRIDES = {
   'P4-E1':'La fonction doit renvoyer la plus grande des deux valeurs a et b. Si a et b sont égales, elle renvoie cette valeur commune.',
   'P5-E1':'La fonction doit renvoyer un entier égal au nombre d’occurrences du caractère lettre dans texte. Si texte est vide ou si lettre n’apparaît pas, le résultat doit être 0.',
   'P5-X2':'La fonction doit renvoyer un entier égal au nombre de caractères # présents dans message. Un message vide ou ne contenant aucun # doit renvoyer 0.',
+  'T1-E1':'La fonction doit renvoyer la somme des entiers de 0 à n inclus. Ainsi somme_n(0) renvoie 0, somme_n(1) renvoie 1 et somme_n(5) renvoie 15.',
+  'T1-E2':'La fonction doit renvoyer le nombre d’occurrences de x parmi les éléments de tab situés de l’indice i jusqu’à la fin. Si i vaut len(tab), le résultat est 0.',
+  'T1-E3':'La fonction doit renvoyer True si la portion de texte comprise entre les indices g et d inclus se lit de la même façon dans les deux sens, et False dès qu’une paire de caractères diffère. Si g >= d, elle renvoie True.',
+  'T1-X1':'La fonction doit renvoyer une chaîne constituée de n répétitions successives de c. Lorsque n vaut 0, elle doit renvoyer la chaîne vide.',
+  'T1-X2':'La fonction doit renvoyer le nombre d’éléments de tab restant à compter à partir de l’indice i inclus. Si i vaut len(tab), elle renvoie 0.',
+  'T1-X4':'La fonction doit renvoyer la puissance entière a exposant n selon les règles récursives fournies. Pour n égal à 0, le résultat doit être 1.',
   'T8-E1':'La fonction doit renvoyer f(f(x)) : elle applique une première fois f à x, puis applique une seconde fois la même fonction au résultat obtenu.',
   'T4-X5':'La fonction doit renvoyer la racine de l’ABR après insertion de x. Si l’arbre initial est vide, le nouveau nœud contenant x devient la racine ; sinon la racine existante est conservée.',
   'T11-X5':'La fonction doit renvoyer True si le motif apparaît dans le texte et False sinon. Le motif vide est considéré comme présent. La recherche doit utiliser la stratégie de Horspool simplifiée demandée.'
@@ -51,12 +57,13 @@ const PARAM_OVERRIDES = {
   },
   'T1-E2':{
     tab:'liste dans laquelle la fonction récursive compte les occurrences de x sans utiliser de slice',
-    x:'valeur dont on veut compter le nombre d’occurrences dans tab',
-    i:'indice courant de la récursion ; il commence à 0 et avance jusqu’à len(tab)'
+    x:'valeur dont on veut compter le nombre d’occurrences dans la partie de tab encore à examiner',
+    i:'premier indice encore à examiner ; l’appel initial utilise normalement 0 et chaque appel récursif augmente i de 1'
   },
   'T1-E3':{
-    a:'base numérique de la puissance aⁿ',
-    n:'exposant entier supérieur ou égal à 0 ; il diminue à chaque appel récursif'
+    texte:'chaîne de caractères dont on vérifie récursivement la symétrie entre deux indices',
+    g:'indice gauche de la zone encore à vérifier ; il augmente de 1 lorsque les deux extrémités sont égales',
+    d:'indice droit de la zone encore à vérifier ; il diminue de 1 lorsque les deux extrémités sont égales'
   },
   'T2-E3':{
     x:'abscisse numérique du point, stockée dans l’attribut self.x',
