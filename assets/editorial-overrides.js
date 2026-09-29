@@ -7,6 +7,8 @@ const RESULT_OVERRIDES = {
   'P1-E1':'La fonction doit renvoyer un nombre égal au prix unitaire multiplié par la quantité achetée. Si la quantité vaut 0, le résultat doit être 0.',
   'P1-E3':'La fonction doit renvoyer un booléen : True lorsque n est divisible par 2, et False lorsqu’il ne l’est pas.',
   'P4-E1':'La fonction doit renvoyer la plus grande des deux valeurs a et b. Si a et b sont égales, elle renvoie cette valeur commune.',
+  'P5-E1':'La fonction doit renvoyer un entier égal au nombre d’occurrences du caractère lettre dans texte. Si texte est vide ou si lettre n’apparaît pas, le résultat doit être 0.',
+  'P5-X2':'La fonction doit renvoyer un entier égal au nombre de caractères # présents dans message. Un message vide ou ne contenant aucun # doit renvoyer 0.',
   'T8-E1':'La fonction doit renvoyer f(f(x)) : elle applique une première fois f à x, puis applique une seconde fois la même fonction au résultat obtenu.',
   'T4-X5':'La fonction doit renvoyer la racine de l’ABR après insertion de x. Si l’arbre initial est vide, le nouveau nœud contenant x devient la racine ; sinon la racine existante est conservée.',
   'T11-X5':'La fonction doit renvoyer True si le motif apparaît dans le texte et False sinon. Le motif vide est considéré comme présent. La recherche doit utiliser la stratégie de Horspool simplifiée demandée.'
@@ -25,6 +27,9 @@ const PARAM_OVERRIDES = {
   'P3-E2':{
     valeurs:'liste dans laquelle on veut compter le nombre d’occurrences de la valeur cible',
     cible:'valeur recherchée ; chaque élément égal à cette valeur augmente le compteur'
+  },
+  'P6-X3':{
+    objet:'nouvel élément à ajouter uniquement dans la copie de l’inventaire ; la liste inventaire reçue doit rester inchangée'
   },
   'T1-E2':{
     tab:'liste dans laquelle la fonction récursive compte les occurrences de x sans utiliser de slice',
