@@ -1,5 +1,5 @@
 import { modules, practiceBank, capstones } from '../assets/content.js';
-import { buildExerciseBrief, exerciseBriefHTML } from '../assets/exercise-brief.js';
+import { buildEditorialBrief, exerciseEditorialBriefHTML } from '../assets/editorial-overrides.js';
 
 const moduleById = new Map(modules.map(m=>[m.id,m]));
 const all = [
@@ -9,17 +9,28 @@ const all = [
 ];
 
 const errors=[];
+const genericParam = /paramètre fourni|rôle est précisé|signification est donnée par la mission/i;
+const genericResult = /respecter exactement la règle décrite|résultat renvoyé ou affiché/i;
+
 for(const {ex,module} of all){
-  const b=buildExerciseBrief(ex,module);
-  const html=exerciseBriefHTML(ex,module);
+  const b=buildEditorialBrief(ex,module);
+  const html=exerciseEditorialBriefHTML(ex,module);
   if(!b.task || b.task.length<18) errors.push(`${ex.id}: mission trop courte (${b.task.length})`);
+  if(!b.narrative || b.narrative.length<90) errors.push(`${ex.id}: reformulation éditoriale insuffisante`);
+  if(!b.resultRule || b.resultRule.length<45 || genericResult.test(b.resultRule)) errors.push(`${ex.id}: résultat attendu trop générique`);
   if(!b.before || b.before.length<70) errors.push(`${ex.id}: guidage avant codage insuffisant`);
   if(!b.check || b.check.length<35) errors.push(`${ex.id}: question de contrôle insuffisante`);
+  if(!b.mistake || b.mistake.length<45) errors.push(`${ex.id}: erreur classique non explicitée`);
   if(!b.examples.length) errors.push(`${ex.id}: aucun cas de validation explicité`);
-  if(!html.includes('Contrat du programme')) errors.push(`${ex.id}: contrat absent du rendu`);
-  if(!html.includes('Avant de coder')) errors.push(`${ex.id}: phase de préparation absente`);
-  if(!html.includes('Cas que la validation vérifie')) errors.push(`${ex.id}: cas de test non explicités`);
-  if(!html.includes('Quand puis-je considérer l’exercice comme réussi ?')) errors.push(`${ex.id}: critères de réussite absents`);
+  if(b.params.some(p=>!p.description || p.description.length<24)) errors.push(`${ex.id}: description de paramètre trop courte`);
+  for(const p of b.params){
+    if(genericParam.test(p.description) && !new RegExp(`\\b${p.name}\\b`).test(b.task)) {
+      errors.push(`${ex.id}: paramètre ${p.name} insuffisamment documenté`);
+    }
+  }
+  for(const marker of ['Ce que tu dois réellement faire','Contrat précis','Données reçues','Valeur ou effet attendu','Avant d’écrire du Python','Erreur classique à éviter','Exemples contrôlés','Critères de réussite']){
+    if(!html.includes(marker)) errors.push(`${ex.id}: bloc éditorial manquant — ${marker}`);
+  }
   if(/undefined|null/.test(html)) errors.push(`${ex.id}: valeur indéfinie dans le rendu`);
 }
 
@@ -31,4 +42,4 @@ if(errors.length){
   console.error(errors.join('\n'));
   process.exit(1);
 }
-console.log(`Statement Quality Gate: ${all.length} exercices, ${coveredModules.size} modules — énoncé détaillé, contrat, guidage, cas de test et critères de réussite présents.`);
+console.log(`Editorial Statement Gate: ${all.length} exercices, ${coveredModules.size} modules — mission reformulée, contrat concret, résultat explicite, paramètres décrits, erreurs classiques, cas frontières et critères de réussite présents.`);
