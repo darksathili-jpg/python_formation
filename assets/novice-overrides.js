@@ -1,4 +1,4 @@
-export function applyNoviceContentFixes(modules, practiceBank) {
+export function applyNoviceContentFixes(modules, practiceBank, noviceBank) {
   const core = new Map(modules.flatMap(module => module.exercises.map(ex => [ex.id, ex])));
   const extra = new Map(practiceBank.map(ex => [ex.id, ex]));
 
@@ -40,5 +40,11 @@ export function applyNoviceContentFixes(modules, practiceBank) {
   if (minimum) {
     minimum.solution = 'def minimum(tab):\n    assert len(tab) > 0\n    m = tab[0]\n    for i in range(1, len(tab)):\n        if tab[i] < m:\n            m = tab[i]\n    return m';
     minimum.hints = ['Initialise avec tab[0].', 'Parcours ensuite les indices de 1 à len(tab)-1.'];
+  }
+
+  // P3 reste centré sur les boucles : def/return sont un cadre fourni, pas un prérequis caché.
+  const p3 = noviceBank?.find(item => item.moduleId === 'P3');
+  if (p3) {
+    p3.harness = 'Les lignes def ... et return sont encore fournies comme cadre de test. Tu n’as pas à les produire seul ici : la compétence visée est la boucle, avec son initialisation, sa mise à jour et son arrêt. Les fonctions seront étudiées en P4.';
   }
 }
