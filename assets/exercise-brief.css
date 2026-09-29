@@ -1,4 +1,5 @@
 /* PYTHON//FORGE V1.6 — Statement Quality Gate */
+.exercise-prompt-legacy{display:none}
 .exercise-brief{margin:0 0 1rem;padding:1rem 1.05rem;border:1px solid color-mix(in srgb,var(--accent) 34%,var(--line));border-radius:16px;background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 5%,var(--panel)),var(--panel));}
 .brief-kicker{font:800 .7rem/1.2 var(--mono,ui-monospace);letter-spacing:.08em;color:var(--accent);text-transform:uppercase}
 .brief-task{margin:.7rem 0 1rem;padding:.85rem .9rem;border-left:4px solid var(--accent);border-radius:0 12px 12px 0;background:color-mix(in srgb,var(--accent) 7%,transparent)}
