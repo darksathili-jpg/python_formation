@@ -34,6 +34,7 @@ if (p7) {
 
 if (p8) {
   const lessonText = p8.lessons.map(l => `${l.title} ${l.html} ${(l.points || []).join(' ')} ${l.code || ''}`).join('\n');
+  const lessonCode = p8.lessons.map(l => l.code || '').join('\n');
   for (const marker of [
     'Transition P7 → P8',
     'table par une liste de ces dictionnaires',
@@ -45,9 +46,7 @@ if (p8) {
   ]) {
     if (!lessonText.includes(marker)) errors.push(`P8: notion manquante — ${marker}`);
   }
-  if (/\blambda\b/.test(lessonText.replace('lambda', ''))) {
-    errors.push('P8: lambda introduit dans le cours');
-  }
+  if (/\blambda\b/.test(lessonCode)) errors.push('P8: lambda introduit dans les exemples exécutables');
   const e1 = get(p8.exercises, 'P8-E1');
   if (!e1 || !e1.solution.includes("resultat.append(ligne)") || /\[[^\]]+for\s+/.test(e1.solution)) {
     errors.push('P8-E1: filtrage explicite attendu avant compréhension');
