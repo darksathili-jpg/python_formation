@@ -1,0 +1,14 @@
+/* PYTHON//FORGE V1.6 — Statement Quality Gate */
+.exercise-brief{margin:0 0 1rem;padding:1rem 1.05rem;border:1px solid color-mix(in srgb,var(--accent) 34%,var(--line));border-radius:16px;background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 5%,var(--panel)),var(--panel));}
+.brief-kicker{font:800 .7rem/1.2 var(--mono,ui-monospace);letter-spacing:.08em;color:var(--accent);text-transform:uppercase}
+.brief-task{margin:.7rem 0 1rem;padding:.85rem .9rem;border-left:4px solid var(--accent);border-radius:0 12px 12px 0;background:color-mix(in srgb,var(--accent) 7%,transparent)}
+.brief-task>strong{font-size:1rem}.brief-task p{margin:.35rem 0 0}.brief-kind{color:var(--muted);font-size:.92rem}
+.brief-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.75rem}
+.brief-panel{padding:.9rem;border:1px solid var(--line);border-radius:13px;background:color-mix(in srgb,var(--panel-2) 92%,transparent);min-width:0}
+.brief-panel>strong{display:block;margin-bottom:.45rem}.brief-panel ul,.brief-panel ol{margin:.5rem 0 0;padding-left:1.2rem}.brief-panel li{margin:.35rem 0}.brief-panel code{font-family:var(--mono);font-size:.88em;overflow-wrap:anywhere}
+.brief-sub{margin-top:.8rem;padding-top:.7rem;border-top:1px dashed var(--line)}.brief-sub>strong{font-size:.86rem}.brief-sub p{margin:.35rem 0 0;color:var(--muted)}
+.brief-note{margin-top:.6rem!important;font-size:.82rem;color:var(--muted)}
+.brief-success{margin-top:.8rem;border-top:1px solid var(--line);padding-top:.7rem}.brief-success summary{cursor:pointer;font-weight:700}.brief-success ul{margin:.65rem 0 0;padding-left:1.25rem}.brief-success li{margin:.35rem 0;color:var(--muted)}
+html.projector .exercise-brief{background:#fff!important;border-width:2px!important}.projector .brief-panel{background:#fff!important;border-width:2px!important}.projector .brief-task{background:#f2f8f6!important}
+@media(max-width:980px){.brief-grid{grid-template-columns:1fr}.brief-panel{padding:.85rem}.exercise-brief{padding:.9rem}}
+@media print{.exercise-brief,.brief-panel,.brief-task{background:#fff!important;color:#000!important;box-shadow:none!important}.exercise-brief{border:1px solid #555}.brief-panel{break-inside:avoid}.brief-success{display:none}}
