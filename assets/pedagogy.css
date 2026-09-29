@@ -1,0 +1,68 @@
+/* PYTHON//FORGE V1.2 — Pedagogy Engine */
+.no-math-banner{
+  margin:1.1rem 0 2rem;padding:1rem 1.15rem;display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:start;
+  border:1px solid color-mix(in srgb,var(--accent,#66fbd1) 34%,transparent);border-radius:18px;
+  background:linear-gradient(120deg,color-mix(in srgb,var(--accent,#66fbd1) 10%,transparent),transparent 65%);
+}
+.no-math-banner p{margin:.35rem 0 0;color:var(--muted);max-width:85ch}
+.no-math-icon{font:700 1.05rem/1 var(--mono,monospace);padding:.65rem;border-radius:12px;border:1px solid currentColor;opacity:.85}
+.training-zone{margin-top:2.4rem}
+.training-rationale,.retrieval-note{
+  margin:.8rem 0 1.1rem;padding:.8rem 1rem;border-left:3px solid var(--accent,#66fbd1);
+  background:color-mix(in srgb,var(--panel,#0d1c23) 88%,var(--accent,#66fbd1) 12%);border-radius:0 12px 12px 0;color:var(--muted)
+}
+.pedagogy-kind{text-transform:none}
+.scaffold-btn{border-style:dashed}
+.primm-lab{position:relative;overflow:hidden;margin-top:2rem}
+.primm-lab::before{content:"PRIMM";position:absolute;right:-.1em;top:-.28em;font:900 clamp(4rem,10vw,8rem)/1 var(--mono,monospace);opacity:.035;pointer-events:none}
+.primm-steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.65rem;margin:1rem 0}
+.primm-step{padding:.75rem;border:1px solid var(--line);border-radius:14px;background:color-mix(in srgb,var(--panel) 94%,transparent)}
+.primm-step b{font:700 .72rem/1.2 var(--mono,monospace);letter-spacing:.07em;color:var(--accent)}
+.primm-step p,.primm-step li{font-size:.87rem;color:var(--muted)}
+.primm-step ul{padding-left:1.1rem;margin:.5rem 0}
+.reflection-editor{
+  width:100%;min-height:90px;resize:vertical;border:1px solid var(--line);border-radius:10px;padding:.7rem;
+  background:var(--code-bg,#071319);color:var(--text);font:inherit
+}
+.primm-code-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(280px,.9fr);gap:1rem}
+.primm-editor{min-height:260px}
+.practice-gym{margin:1.2rem 0 2rem}
+.gym-actions{display:flex;flex-wrap:wrap;gap:.6rem;margin:1rem 0}
+.capstone-list{margin:2rem 0}
+.capstone-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.capstone-card{
+  display:block;text-decoration:none;color:inherit;padding:1.05rem;border:1px solid var(--line);border-radius:16px;
+  background:linear-gradient(145deg,color-mix(in srgb,var(--panel) 92%,var(--amber,#ffc862) 8%),var(--panel));
+  transition:transform .18s ease,border-color .18s ease
+}
+.capstone-card:hover{transform:translateY(-2px);border-color:var(--amber,#ffc862)}
+.capstone-card span{font:700 .72rem var(--mono,monospace);color:var(--amber,#ffc862)}
+.capstone-card h3{margin:.35rem 0}.capstone-card p{color:var(--muted)}.capstone-card b{font-size:.86rem}
+.capstone-hero{margin-bottom:1rem}
+.mission-document{margin:1rem 0 1.25rem;padding:1.1rem;border:1px solid color-mix(in srgb,var(--amber,#ffc862) 45%,var(--line));border-radius:18px;background:color-mix(in srgb,var(--panel) 94%,var(--amber,#ffc862) 6%)}
+.mission-document p{max-width:90ch;color:var(--muted)}
+.capstone-rules{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.8rem}
+.capstone-rules span{padding:.45rem .6rem;border:1px solid var(--line);border-radius:999px;font:600 .74rem var(--mono,monospace)}
+.capstone-exercise{border-color:color-mix(in srgb,var(--amber,#ffc862) 45%,var(--line))}
+.parsons-box{margin-top:.8rem;padding:.9rem;border:1px dashed var(--accent,#66fbd1);border-radius:14px;background:color-mix(in srgb,var(--panel) 94%,var(--accent,#66fbd1) 6%)}
+.parsons-list{display:grid;gap:.4rem;padding:0;list-style:none;counter-reset:line}
+.parsons-list li{display:grid;grid-template-columns:1fr auto;gap:.6rem;align-items:center;padding:.55rem .65rem;border:1px solid var(--line);border-radius:10px;background:var(--code-bg,#071319)}
+.parsons-list code{white-space:pre;overflow:auto;font-size:.83rem}
+.parsons-list button{width:2rem;height:2rem;border:1px solid var(--line);border-radius:7px;background:transparent;color:var(--text);cursor:pointer}
+.parsons-ok{color:#8ff0b1}.parsons-warn{color:var(--amber,#ffc862)}
+.mission-success{margin-bottom:.7rem;color:#8ff0b1;font-weight:700}
+.ped-log{white-space:pre-wrap;margin:0 0 .7rem;color:var(--muted)}
+.training-chip{border-style:dashed}
+@media (max-width:900px){
+  .primm-steps{grid-template-columns:1fr 1fr}
+  .primm-code-grid,.capstone-grid{grid-template-columns:1fr}
+}
+@media (max-width:620px){
+  .no-math-banner{grid-template-columns:1fr}.no-math-icon{width:max-content}
+  .primm-steps{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){.capstone-card{transition:none}.capstone-card:hover{transform:none}}
+@media print{
+  .gym-actions,.runner-actions,.scaffold-btn,.parsons-box{display:none!important}
+  .no-math-banner,.primm-lab,.mission-document{break-inside:avoid;background:white!important;color:black!important}
+}
