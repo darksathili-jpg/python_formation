@@ -108,16 +108,22 @@ jobs:
           test -s assets/novice-gate.js
           test -s assets/novice-bank.js
           test -s assets/novice-overrides.js
+          test -s assets/branding.css
+          test -s assets/branding/logo-watteau.jpg
           test -s manifest.webmanifest
           grep -q 'id="view"' index.html
           grep -q 'id="python-engine-status"' index.html
           grep -q 'pedagogy-bootstrap.js' index.html
           grep -q 'pedagogy-engine.js' index.html
           grep -q 'novice-gate.js' index.html
+          grep -q 'logo-watteau.jpg' index.html
+          grep -q 'branding.css' index.html
           grep -q 'pedagogy-bootstrap.js' sw.js
           grep -q 'practice-bank.js' sw.js
           grep -q 'novice-gate.js' sw.js
+          grep -q 'logo-watteau.jpg' sw.js
           grep -q 'prefers-reduced-motion' assets/styles.css
           grep -q 'prefers-reduced-motion' assets/classroom-reliability.css
           grep -q 'prefers-reduced-motion' assets/pedagogy.css
           grep -q 'prefers-reduced-motion' assets/novice-gate.css
+          grep -q 'prefers-reduced-motion' assets/branding.css
