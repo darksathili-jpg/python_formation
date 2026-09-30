@@ -48,6 +48,16 @@ applyStudentZeroT3T4(modules, practiceBank, primmBank, noviceBank);
 applyStudentZeroT4T5(modules, practiceBank, primmBank, noviceBank);
 applyStudentZeroT5T6(modules, practiceBank, primmBank, noviceBank);
 
+// Le brief éditorial d'un exercice de débogage doit expliciter le résultat observable,
+// pas seulement la correction technique à effectuer.
+const t6x3 = practiceBank.find(item => item.id === 'T6-X3');
+if (t6x3) {
+  t6x3.prompt = t6x3.prompt.replace(
+    'La fonction renvoie toujours <code>cur.fetchone()</code>.',
+    'La fonction doit renvoyer la première ligne trouvée par le curseur avec <code>cur.fetchone()</code> après l’exécution de la requête paramétrée.'
+  );
+}
+
 // T3-X4 teste un code client contre une pile complète : l’exercice doit donc être autonome
 // dans le Python Lab, sans dépendre d’un exercice exécuté auparavant.
 const t3x4 = practiceBank.find(item => item.id === 'T3-X4');
