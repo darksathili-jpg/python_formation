@@ -1,0 +1,40 @@
+name: Student Zero T5-T6 gate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  relational-model-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - name: Syntax
+        run: |
+          node --check assets/student-zero-t5t6.js
+          node --check scripts/validate-student-zero-t5t6.mjs
+          node --check assets/content.js
+          node --check sw.js
+      - name: Student Zero T5/T6
+        run: node scripts/validate-student-zero-t5t6.mjs
+      - name: Regression gates
+        run: |
+          node scripts/validate-exercises.mjs
+          node scripts/validate-novice.mjs
+          node scripts/validate-statements.mjs
+      - name: Wiring and offline cache
+        run: |
+          test -s assets/student-zero-t5t6.js
+          test -s scripts/validate-student-zero-t5t6.mjs
+          grep -q 'applyStudentZeroT5T6' assets/content.js
+          grep -q 'student-zero-t5t6.js' sw.js
+          grep -q "APP_VERSION = '1.18.0'" sw.js
+          grep -q 'V1.18' index.html
+          grep -q 'Éduscol — bases de données : modèle relationnel et SQL' assets/content.js
