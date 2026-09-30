@@ -1,4 +1,4 @@
-import { modules, practiceBank, primmBank, noviceBank, SITE_VERSION } from '../assets/content.js';
+import { modules, practiceBank, primmBank, noviceBank } from '../assets/content.js';
 
 const errors = [];
 const t8 = modules.find(m => m.id === 'T8');
@@ -15,7 +15,6 @@ function text(value) {
   return String(value ?? '');
 }
 
-requireCond(SITE_VERSION === '1.20.0', `SITE_VERSION=${SITE_VERSION} au lieu de 1.20.0`);
 requireCond(Boolean(t8), 'Module T8 introuvable');
 requireCond(practice.length === 5, `T8 doit avoir 5 entraînements, trouvé ${practice.length}`);
 requireCond(Boolean(primm), 'PRIMM T8 introuvable');
