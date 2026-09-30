@@ -10,7 +10,7 @@ const ids = all.map(ex => ex.id);
 if (new Set(ids).size !== ids.length) throw new Error('Identifiants d’exercices dupliqués');
 if (practiceBank.length !== 100) throw new Error(`Banque d’entraînement: ${practiceBank.length} au lieu de 100`);
 if (primmBank.length !== modules.length) throw new Error(`PRIMM: ${primmBank.length} ateliers pour ${modules.length} modules`);
-if (capstones.length !== 4) throw new Error(`Applications intégratives: ${capstones.length} au lieu de 4`);
+if (capstones.length !== 9) throw new Error(`Applications intégratives: ${capstones.length} au lieu de 9`);
 
 for (const module of modules) {
   const n = practiceBank.filter(ex => ex.moduleId === module.id).length;
