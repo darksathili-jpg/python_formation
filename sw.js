@@ -35,6 +35,7 @@ const SHELL = [
   './assets/student-zero-t5t6.js',
   './assets/student-zero-t6t7.js',
   './assets/student-zero-t7t8.js',
+  './assets/student-zero-t7t8-editorial.js',
   './assets/app-shell.js',
   './assets/content.js',
   './assets/content-meta.js',
