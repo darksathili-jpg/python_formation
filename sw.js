@@ -1,4 +1,4 @@
-const APP_VERSION = '1.20.0';
+const APP_VERSION = '1.21.0';
 const PYODIDE_VERSION = '314.0.7';
 const SHELL_CACHE = `python-forge-shell-v${APP_VERSION}`;
 const RUNTIME_CACHE = `python-forge-pyodide-${PYODIDE_VERSION}`;
@@ -36,6 +36,8 @@ const SHELL = [
   './assets/student-zero-t6t7.js',
   './assets/student-zero-t7t8.js',
   './assets/student-zero-t7t8-editorial.js',
+  './assets/student-zero-t8t9.js',
+  './assets/student-zero-t8t9-editorial.js',
   './assets/app-shell.js',
   './assets/content.js',
   './assets/content-meta.js',
