@@ -1,0 +1,44 @@
+name: Student Zero T9-T10 gate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  dynamic-programming-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - name: Syntax
+        run: |
+          node --check assets/student-zero-t9t10.js
+          node --check assets/student-zero-t9t10-editorial.js
+          node --check scripts/validate-student-zero-t9t10.mjs
+          node --check assets/content.js
+          node --check sw.js
+      - name: Student Zero T9/T10
+        run: node scripts/validate-student-zero-t9t10.mjs
+      - name: Regression gates
+        run: |
+          node scripts/validate-exercises.mjs
+          node scripts/validate-novice.mjs
+          node scripts/validate-statements.mjs
+      - name: Wiring and offline cache
+        run: |
+          test -s assets/student-zero-t9t10.js
+          test -s assets/student-zero-t9t10-editorial.js
+          test -s scripts/validate-student-zero-t9t10.mjs
+          grep -q 'applyStudentZeroT9T10' assets/content.js
+          grep -q 'student-zero-t9t10.js' sw.js
+          grep -q 'student-zero-t9t10-editorial.js' sw.js
+          grep -q 'Éduscol — Programmation dynamique' assets/content.js
+          grep -q 'Transition T9 → T10 : mêmes mots, problème différent' assets/student-zero-t9t10.js
+          grep -q 'Mémoïsation ≠' assets/student-zero-t9t10.js
+          grep -q 'Bottom-up : calculer dans l’ordre des dépendances' assets/student-zero-t9t10.js
