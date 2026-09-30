@@ -20,9 +20,13 @@ jobs:
         run: |
           node --check assets/bac-readiness.js
           node --check assets/bac-readiness-ui.js
+          node --check assets/bac-readiness-evidence.js
           node --check scripts/validate-bac-readiness.mjs
+          node --check scripts/validate-bac-readiness-evidence.mjs
       - name: Bac Readiness model and reference solutions
         run: node scripts/validate-bac-readiness.mjs
+      - name: Recognition evidence gate
+        run: node scripts/validate-bac-readiness-evidence.mjs
       - name: Existing exercise corpus
         run: node scripts/validate-exercises.mjs
       - name: Terminale transversal regression gate
