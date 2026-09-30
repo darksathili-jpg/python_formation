@@ -136,8 +136,9 @@ function patchSummary(root) {
   if (grid && !grid.querySelector('[data-brg-evidence-summary]')) {
     grid.insertAdjacentHTML('beforeend', `<div class="brg-summary-card" data-brg-evidence-summary><strong>${metrics.taskPassed}/${metrics.taskTotal}</strong><span>stratégies déclarées avant le premier test</span></div>`);
   } else if (grid) {
-    const card = grid.querySelector('[data-brg-evidence-summary]');
-    card.querySelector('strong').textContent = `${metrics.taskPassed}/${metrics.taskTotal}`;
+    const cardStrong = grid.querySelector('[data-brg-evidence-summary] strong');
+    const value = `${metrics.taskPassed}/${metrics.taskTotal}`;
+    if (cardStrong && cardStrong.textContent !== value) cardStrong.textContent = value;
   }
 
   const gate = summary.querySelector('.brg-gate');
@@ -149,19 +150,20 @@ function patchSummary(root) {
 
   const chip = summary.querySelector('.section-head .chip');
   if (chip) {
-    chip.textContent = finalPass ? 'Gate vert' : 'Gate non franchi';
+    const chipText = finalPass ? 'Gate vert' : 'Gate non franchi';
+    if (chip.textContent !== chipText) chip.textContent = chipText;
     chip.classList.toggle('ok', finalPass);
   }
 
   const strong = gate.querySelector('strong');
   if (strong) {
+    let message = 'Le gate reste ouvert.';
     if (finalPass) {
-      strong.textContent = 'Bac Readiness Gate V1.26 franchi sur le périmètre du site.';
+      message = 'Bac Readiness Gate V1.26 franchi sur le périmètre du site.';
     } else if (corePass && !metrics.pass) {
-      strong.textContent = `Le gate reste ouvert : ${metrics.taskPassed}/${metrics.taskTotal} preuves de reconnaissance recueillies dans le temps.`;
-    } else {
-      strong.textContent = 'Le gate reste ouvert.';
+      message = `Le gate reste ouvert : ${metrics.taskPassed}/${metrics.taskTotal} preuves de reconnaissance recueillies dans le temps.`;
     }
+    if (strong.textContent !== message) strong.textContent = message;
   }
 }
 
