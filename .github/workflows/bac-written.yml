@@ -1,0 +1,36 @@
+name: Bac Written Training Gate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  bac-written:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - name: Syntax
+        run: |
+          node --check assets/bac-written-corpus.js
+          node --check assets/bac-written-2021.js
+          node --check assets/bac-written-2022.js
+          node --check assets/bac-written-2023.js
+          node --check assets/bac-written-2024.js
+          node --check assets/bac-written-2025.js
+          node --check assets/bac-written-detailed.js
+          node --check assets/bac-written-bootstrap.js
+          node --check assets/bac-written-ui.js
+          node --check scripts/validate-bac-written.mjs
+      - name: Written training model and corpus
+        run: node scripts/validate-bac-written.mjs
+      - name: Preserve Bac Readiness gate
+        run: node scripts/validate-bac-readiness.mjs
+      - name: Preserve Recognition Evidence
+        run: node scripts/validate-bac-readiness-evidence.mjs
