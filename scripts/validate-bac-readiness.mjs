@@ -69,11 +69,13 @@ const index = fs.readFileSync('index.html', 'utf8');
 const sw = fs.readFileSync('sw.js', 'utf8');
 need(index.includes('bac-readiness.css?v=1.25.0'), 'CSS Bac Readiness absent de index.html');
 need(index.includes('bac-readiness-ui.js?v=1.25.0'), 'UI Bac Readiness absente de index.html');
-need(sw.includes('bac-readiness.js') && sw.includes('bac-readiness-ui.js?v=1.25.0') && sw.includes('bac-readiness.css?v=1.25.0'), 'Assets Bac Readiness absents du cache hors ligne');
-need(index.includes('V1.25'), 'Footer V1.25 absent');
+need(index.includes('bac-readiness-evidence.js?v=1.26.0'), 'Couche Recognition Evidence V1.26 absente de index.html');
+need(sw.includes('bac-readiness.js') && sw.includes('bac-readiness-ui.js?v=1.25.0') && sw.includes('bac-readiness.css?v=1.25.0'), 'Assets Bac Readiness cœur absents du cache hors ligne');
+need(sw.includes('bac-readiness-evidence.js?v=1.26.0'), 'Couche Recognition Evidence V1.26 absente du cache hors ligne');
+need(index.includes('V1.26'), 'Footer V1.26 absent');
 
 if (errors.length) {
   console.error(errors.join('\n'));
   process.exit(1);
 }
-console.log('Bac Readiness Gate: 4 parcours chronométrés, 8 tâches testées, T1→T11 couvert, justification, dialogue, débrief différé et cache hors ligne — OK');
+console.log('Bac Readiness Gate: cœur V1.25 + Recognition Evidence V1.26, 4 parcours chronométrés, 8 tâches testées, T1→T11 couvert, justification, dialogue, débrief différé et cache hors ligne — OK');
