@@ -73,7 +73,8 @@ function enhancePractice() {
   const capList = view.querySelector('.capstone-list');
   if (capList) {
     const p = capList.querySelector('.section-head p');
-    if (p) p.textContent = `${capstones.length} situations originales pour assembler plusieurs compétences à partir d’un document de mission.`;
+    const expected = `${capstones.length} situations originales pour assembler plusieurs compétences à partir d’un document de mission.`;
+    if (p && p.textContent !== expected) p.textContent = expected;
     capList.querySelectorAll('.capstone-card').forEach((card,index)=>{
       const c = capstones[index];
       if (!c || card.querySelector('[data-cap-modules]')) return;
