@@ -40,7 +40,7 @@ if (t11) {
   ]) need(lessons.includes(marker), `T11 lessons: notion absente — ${marker}`);
 
   need(lower.includes('réutilisant la réponse d’un sous-problème') && lower.includes('échec de comparaison'), 'T11 doit distinguer explicitement le mécanisme de T10 de celui de T11');
-  need(lower.includes('prétraitement') && lower.includes('calculé une seule fois'), 'T11 doit expliquer que le prétraitement dépend du motif et peut être calculé une seule fois');
+  need(lower.includes('prétraitement') && lower.includes('une seule fois') && lower.includes('motif'), 'T11 doit expliquer que le prétraitement dépend du motif et peut être calculé une seule fois');
   need(lower.includes('saut doit être justifié') && lower.includes('manquer une occurrence'), 'T11 doit relier correction et sûreté du décalage');
   need(!/théorème|master theorem/i.test(lessons), 'T11 ne doit pas dériver vers un formalisme de complexité hors programme');
 
