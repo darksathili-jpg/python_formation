@@ -21,6 +21,7 @@ import { applyStudentZeroT4T5 } from './student-zero-t4t5.js';
 import { applyStudentZeroT5T6 } from './student-zero-t5t6.js';
 import { applyStudentZeroT6T7 } from './student-zero-t6t7.js';
 import { applyStudentZeroT7T8 } from './student-zero-t7t8.js';
+import './student-zero-t7t8-editorial.js';
 
 export const SITE_VERSION = '1.20.0';
 export const tracks = metaTracks;
