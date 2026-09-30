@@ -20,8 +20,10 @@ import { applyStudentZeroT3T4 } from './student-zero-t3t4.js';
 import { applyStudentZeroT4T5 } from './student-zero-t4t5.js';
 import { applyStudentZeroT5T6 } from './student-zero-t5t6.js';
 import { applyStudentZeroT6T7 } from './student-zero-t6t7.js';
+import { applyStudentZeroT7T8 } from './student-zero-t7t8.js';
+import './student-zero-t7t8-editorial.js';
 
-export const SITE_VERSION = '1.19.0';
+export const SITE_VERSION = '1.20.0';
 export const tracks = metaTracks;
 export const flashQuestions = metaFlashQuestions;
 export const scopeNotes = metaScopeNotes;
@@ -38,6 +40,18 @@ export const sources = [
     kind: 'Ressources officielles Terminale NSI',
     url: 'https://eduscol.education.gouv.fr/5823/programmes-et-ressources-en-numerique-et-sciences-informatiques-voie-g',
     note: 'Appui V1.19 : ressources Terminale « Modularité et API », « Écriture de tests » et « Mise au point des programmes, gestion des bugs ». La progression privilégie contrat, responsabilités, cas discriminants, instrumentation ciblée et tests de régression, sans dériver vers un cours de génie logiciel universitaire.'
+  },
+  {
+    title: 'Éduscol — le paradigme fonctionnel',
+    kind: 'Ressource officielle Terminale NSI',
+    url: 'https://eduscol.education.fr/document/7313/download',
+    note: 'Appui V1.20 pour introduire le paradigme fonctionnel par l’idée de fonction comme donnée, sans faire de lambda ni de fonction interne un prérequis syntaxique.'
+  },
+  {
+    title: 'Éduscol — calculabilité et décidabilité',
+    kind: 'Ressource officielle Terminale NSI',
+    url: 'https://eduscol.education.fr/document/30082/download',
+    note: 'Appui V1.20 pour distinguer calculabilité, problèmes de décision, décidabilité et indécidabilité, et pour présenter sans formalisme théorique lourd le problème de l’arrêt.'
   }
 ];
 
@@ -55,6 +69,7 @@ applyStudentZeroT3T4(modules, practiceBank, primmBank, noviceBank);
 applyStudentZeroT4T5(modules, practiceBank, primmBank, noviceBank);
 applyStudentZeroT5T6(modules, practiceBank, primmBank, noviceBank);
 applyStudentZeroT6T7(modules, practiceBank, primmBank, noviceBank);
+applyStudentZeroT7T8(modules, practiceBank, primmBank, noviceBank);
 
 // Le brief éditorial d'un exercice de débogage doit expliciter le résultat observable,
 // pas seulement la correction technique à effectuer.
