@@ -1,0 +1,40 @@
+name: Student Zero T6-T7 gate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  modularity-debug-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - name: Syntax
+        run: |
+          node --check assets/student-zero-t6t7.js
+          node --check scripts/validate-student-zero-t6t7.mjs
+          node --check assets/content.js
+          node --check sw.js
+      - name: Student Zero T6/T7
+        run: node scripts/validate-student-zero-t6t7.mjs
+      - name: Regression gates
+        run: |
+          node scripts/validate-exercises.mjs
+          node scripts/validate-novice.mjs
+          node scripts/validate-statements.mjs
+      - name: Wiring and offline cache
+        run: |
+          grep -q 'applyStudentZeroT6T7' assets/content.js
+          grep -q "SITE_VERSION = '1.19.0'" assets/content.js
+          grep -q "APP_VERSION = '1.19.0'" sw.js
+          grep -q 'student-zero-t6t7.js' sw.js
+          grep -q 'V1.19' index.html
+          test -s assets/student-zero-t6t7.js
+          test -s scripts/validate-student-zero-t6t7.mjs
