@@ -15,6 +15,7 @@ import { applyStudentZeroP8P9 } from './student-zero-p8p9.js';
 import { applyStudentZeroP9T1 } from './student-zero-p9t1.js';
 import { applyStudentZeroT1T2 } from './student-zero-t1t2.js';
 import { applyStudentZeroT2T3 } from './student-zero-t2t3.js';
+import { applyStudentZeroT3T4 } from './student-zero-t3t4.js';
 export { SITE_VERSION, tracks, flashQuestions, sources, scopeNotes } from './content-meta.js';
 export const modules = [...p1, ...p2, ...t1, ...t2];
 applyNoviceContentFixes(modules, practiceBank, noviceBank);
@@ -26,6 +27,7 @@ applyStudentZeroP8P9(modules, practiceBank, primmBank, noviceBank);
 applyStudentZeroP9T1(modules, practiceBank, primmBank, noviceBank);
 applyStudentZeroT1T2(modules, practiceBank, primmBank, noviceBank);
 applyStudentZeroT2T3(modules, practiceBank, primmBank, noviceBank);
+applyStudentZeroT3T4(modules, practiceBank, primmBank, noviceBank);
 
 // T3-X4 teste un code client contre une pile complète : l’exercice doit donc être autonome
 // dans le Python Lab, sans dépendre d’un exercice exécuté auparavant.
