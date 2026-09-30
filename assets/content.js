@@ -29,7 +29,7 @@ import './student-zero-t8t9-editorial.js';
 import './student-zero-t9t10-editorial.js';
 import './student-zero-t10t11-editorial.js';
 
-export const SITE_VERSION = '1.24.0';
+export const SITE_VERSION = '1.25.0';
 export const tracks = metaTracks;
 export const flashQuestions = metaFlashQuestions;
 export const scopeNotes = metaScopeNotes;

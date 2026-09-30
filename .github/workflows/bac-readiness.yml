@@ -1,0 +1,29 @@
+name: Bac Readiness Gate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  bac-readiness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - name: Syntax
+        run: |
+          node --check assets/bac-readiness.js
+          node --check assets/bac-readiness-ui.js
+          node --check scripts/validate-bac-readiness.mjs
+      - name: Bac Readiness model and reference solutions
+        run: node scripts/validate-bac-readiness.mjs
+      - name: Existing exercise corpus
+        run: node scripts/validate-exercises.mjs
+      - name: Terminale transversal regression gate
+        run: node scripts/validate-terminale-transversal.mjs
