@@ -13,8 +13,13 @@ need(evidence.includes('MIN_STRATEGY_CHARS = 40'), 'Seuil minimal de stratégie 
 need(evidence.includes("document.addEventListener('click', handleRunCapture, true)"), 'Interception avant le premier test absente');
 need(evidence.includes('entry.lockedAt = now'), 'Verrouillage horodaté de la stratégie absent');
 need(evidence.includes('entry.firstTestAt = now'), 'Horodatage du premier test absent');
+need(evidence.includes('entry.attemptCount = Number(entry.attemptCount || 0) + 1'), 'Comptage objectif des lancements de tests absent');
+need(evidence.includes('firstPassCount'), 'Indicateur de validation au premier lancement absent');
+need(evidence.includes('taskHadPriorTest(core, taskId)'), 'Protection contre la reconstruction a posteriori d’une preuve V1.26 absente');
+need(evidence.includes('handleResetAfter'), 'Synchronisation de la réinitialisation V1.25/V1.26 absente');
 need(evidence.includes('entry.lockedAt <= deadline'), 'Contrôle de la preuve dans la fenêtre chronométrée absent');
 need(evidence.includes('corePass && metrics.pass'), 'Le gate final doit combiner le gate historique et la preuve de reconnaissance');
+need(evidence.includes('setTextIfChanged'), 'Garde-fou contre les boucles de MutationObserver absent');
 need(evidence.includes("Aucun nom de chapitre n'est demandé"), 'La consigne ne doit pas annoncer le chapitre à mobiliser');
 
 need(index.includes('assets/bac-readiness-evidence.js?v=1.26.0'), 'Couche Recognition Evidence absente de index.html');
@@ -29,4 +34,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log('Bac Readiness V1.26 Recognition Evidence: stratégie avant premier test, verrouillage horodaté, gate strict et cache hors ligne — OK');
+console.log('Bac Readiness V1.26 Recognition Evidence: stratégie avant premier test, anti-rattrapage a posteriori, tentatives, reset cohérent, gate strict et cache hors ligne — OK');
