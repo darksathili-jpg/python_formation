@@ -19,8 +19,9 @@ import { applyStudentZeroT2T3 } from './student-zero-t2t3.js';
 import { applyStudentZeroT3T4 } from './student-zero-t3t4.js';
 import { applyStudentZeroT4T5 } from './student-zero-t4t5.js';
 import { applyStudentZeroT5T6 } from './student-zero-t5t6.js';
+import { applyStudentZeroT6T7 } from './student-zero-t6t7.js';
 
-export const SITE_VERSION = '1.18.0';
+export const SITE_VERSION = '1.19.0';
 export const tracks = metaTracks;
 export const flashQuestions = metaFlashQuestions;
 export const scopeNotes = metaScopeNotes;
@@ -31,6 +32,12 @@ export const sources = [
     kind: 'Ressource officielle Terminale NSI',
     url: 'https://eduscol.education.gouv.fr/5823/programmes-et-ressources-en-numerique-et-sciences-informatiques-voie-g',
     note: 'Appui V1.18 pour construire relation, attribut, domaine, tuple, schéma relationnel, clés primaire/étrangère, jointures et requêtes SQL sans confondre le modèle relationnel avec les structures Python.'
+  },
+  {
+    title: 'Éduscol — modularité, écriture de tests et mise au point des programmes',
+    kind: 'Ressources officielles Terminale NSI',
+    url: 'https://eduscol.education.gouv.fr/5823/programmes-et-ressources-en-numerique-et-sciences-informatiques-voie-g',
+    note: 'Appui V1.19 : ressources Terminale « Modularité et API », « Écriture de tests » et « Mise au point des programmes, gestion des bugs ». La progression privilégie contrat, responsabilités, cas discriminants, instrumentation ciblée et tests de régression, sans dériver vers un cours de génie logiciel universitaire.'
   }
 ];
 
@@ -47,6 +54,7 @@ applyStudentZeroT2T3(modules, practiceBank, primmBank, noviceBank);
 applyStudentZeroT3T4(modules, practiceBank, primmBank, noviceBank);
 applyStudentZeroT4T5(modules, practiceBank, primmBank, noviceBank);
 applyStudentZeroT5T6(modules, practiceBank, primmBank, noviceBank);
+applyStudentZeroT6T7(modules, practiceBank, primmBank, noviceBank);
 
 // Le brief éditorial d'un exercice de débogage doit expliciter le résultat observable,
 // pas seulement la correction technique à effectuer.
