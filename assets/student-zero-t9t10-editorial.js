@@ -21,14 +21,14 @@ Object.assign(editorialOverrides.PARAM_OVERRIDES, {
     memo: 'dictionnaire partagé qui associe un état n déjà calculé à son nombre de façons ; None provoque la création du cache au premier appel'
   },
   'T10-E3': {
-    montant: 'somme entière positive ou nulle à former exactement',
+    montant: 'somme entière supérieure ou égale à 0 à former exactement',
     pieces: 'liste de valeurs de pièces entières strictement positives ; chaque valeur peut être réutilisée autant de fois que nécessaire'
   },
   'T10-X1': {
     n: 'dernier indice d’état à construire pour le problème de l’escalier'
   },
   'T10-X2': {
-    n: 'longueur entière positive ou nulle à construire avec des blocs de longueur 1 ou 2',
+    n: 'longueur entière supérieure ou égale à 0 à construire avec des blocs de longueur 1 ou 2',
     memo: 'cache partagé entre tous les appels récursifs pour mémoriser les états n déjà résolus'
   },
   'T10-X3': {
