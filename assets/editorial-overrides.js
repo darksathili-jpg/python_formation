@@ -23,6 +23,8 @@ const RESULT_OVERRIDES = {
   'T3-X3':'Après correction, la classe File doit servir les éléments dans leur ordre d’arrivée : A puis B lorsque A a été enfilé avant B.',
   'T3-X4':'annuler(pile) doit renvoyer None si la pile est vide ; sinon la fonction retire et renvoie le dernier état empilé sans accéder aux attributs internes de la pile.',
   'T3-X5':'FileTickets doit conserver un comportement FIFO malgré ses deux piles internes : les tickets ressortent dans leur ordre d’arrivée, y compris après alternance d’ajouts et de retraits.',
+  'T4-X3':'La fonction doit renvoyer une liste contenant toutes les valeurs de l’arbre en parcours préfixe : valeur du nœud courant, puis valeurs du sous-arbre gauche, puis valeurs du sous-arbre droit. Un arbre vide renvoie [].',
+  'T4-X4':'La fonction doit renvoyer la plus petite valeur contenue dans l’ABR non vide en suivant uniquement les fils gauches jusqu’au premier nœud qui ne possède plus de fils gauche.',
   'T8-E1':'La fonction doit renvoyer f(f(x)) : elle applique une première fois f à x, puis applique une seconde fois la même fonction au résultat obtenu.',
   'T4-X5':'La fonction doit renvoyer la racine de l’ABR après insertion de x. Si l’arbre initial est vide, le nouveau nœud contenant x devient la racine ; sinon la racine existante est conservée.',
   'T11-X5':'La fonction doit renvoyer True si le motif apparaît dans le texte et False sinon. Le motif vide est considéré comme présent. La recherche doit utiliser la stratégie de Horspool simplifiée demandée.'
