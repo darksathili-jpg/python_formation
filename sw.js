@@ -1,4 +1,4 @@
-const APP_VERSION = '1.26.0';
+const APP_VERSION = '1.27.0';
 const PYODIDE_VERSION = '314.0.7';
 const SHELL_CACHE = `python-forge-shell-v${APP_VERSION}`;
 const RUNTIME_CACHE = `python-forge-pyodide-${PYODIDE_VERSION}`;
@@ -16,6 +16,7 @@ const SHELL = [
   './assets/visual-contrast.css?v=1.17.0',
   './assets/exercise-brief.css?v=1.17.0',
   './assets/bac-readiness.css?v=1.25.0',
+  './assets/bac-written.css?v=1.27.0',
   './assets/app.js?v=1.17.0',
   './assets/pedagogy-bootstrap.js?v=1.17.0',
   './assets/pedagogy-engine.js?v=1.17.0',
@@ -26,6 +27,15 @@ const SHELL = [
   './assets/bac-readiness-ui.js?v=1.25.0',
   './assets/bac-readiness-evidence.js?v=1.26.0',
   './assets/bac-readiness.js',
+  './assets/bac-written-bootstrap.js?v=1.27.0',
+  './assets/bac-written-ui.js',
+  './assets/bac-written-corpus.js',
+  './assets/bac-written-detailed.js',
+  './assets/bac-written-2021.js',
+  './assets/bac-written-2022.js',
+  './assets/bac-written-2023.js',
+  './assets/bac-written-2024.js',
+  './assets/bac-written-2025.js',
   './assets/exercise-brief.js',
   './assets/editorial-overrides.js',
   './assets/student-zero-p1p2.js',
