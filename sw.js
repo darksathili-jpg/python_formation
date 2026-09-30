@@ -1,4 +1,4 @@
-const APP_VERSION = '1.25.0';
+const APP_VERSION = '1.26.0';
 const PYODIDE_VERSION = '314.0.7';
 const SHELL_CACHE = `python-forge-shell-v${APP_VERSION}`;
 const RUNTIME_CACHE = `python-forge-pyodide-${PYODIDE_VERSION}`;
@@ -24,6 +24,7 @@ const SHELL = [
   './assets/terminale-transversal-ui.js?v=1.24.0',
   './assets/terminale-transversal.js',
   './assets/bac-readiness-ui.js?v=1.25.0',
+  './assets/bac-readiness-evidence.js?v=1.26.0',
   './assets/bac-readiness.js',
   './assets/exercise-brief.js',
   './assets/editorial-overrides.js',
