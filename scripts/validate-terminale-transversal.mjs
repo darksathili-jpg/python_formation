@@ -77,7 +77,7 @@ const index = fs.readFileSync('index.html', 'utf8');
 const sw = fs.readFileSync('sw.js', 'utf8');
 need(index.includes('terminale-transversal-ui.js?v=1.24.0'), 'UI transversale non chargée dans index.html');
 need(sw.includes('terminale-transversal-ui.js?v=1.24.0') && sw.includes('terminale-transversal.js'), 'Assets transversaux absents du cache hors ligne');
-need(index.includes('V1.24'), 'Footer V1.24 absent');
+need(index.includes('V1.25'), 'Footer V1.25 absent');
 
 if (errors.length) {
   console.error(errors.join('\n'));
