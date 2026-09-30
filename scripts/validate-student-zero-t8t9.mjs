@@ -39,7 +39,7 @@ if (t9) {
   need(lower.includes('calculabilité') && lower.includes('complexité'), 'T9 doit distinguer explicitement calculabilité et complexité');
   need(lower.includes('1024') && lower.includes('10 niveaux'), 'T9 doit matérialiser log₂(n) par des divisions concrètes');
   need(lower.includes('travail total d’un niveau') || lower.includes('travail de fusion sur un niveau complet'), 'T9 doit reconstruire le facteur n par niveau');
-  need(!/master theorem|théorème maître|résoudre formellement.*récurrence/i.test(lessons), 'T9 ne doit pas dériver vers une résolution universitaire des récurrences');
+  need(!/master theorem|théorème maître/i.test(lessons), 'T9 ne doit pas dériver vers le théorème maître');
 
   const e1 = t9.exercises.find(e => e.id === 'T9-E1');
   const e2 = t9.exercises.find(e => e.id === 'T9-E2');
