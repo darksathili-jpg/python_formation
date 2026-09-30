@@ -1,0 +1,44 @@
+name: Student Zero T10-T11 gate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  text-search-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - name: Syntax
+        run: |
+          node --check assets/student-zero-t10t11.js
+          node --check assets/student-zero-t10t11-editorial.js
+          node --check scripts/validate-student-zero-t10t11.mjs
+          node --check assets/content.js
+          node --check sw.js
+      - name: Student Zero T10/T11
+        run: node scripts/validate-student-zero-t10t11.mjs
+      - name: Regression gates
+        run: |
+          node scripts/validate-exercises.mjs
+          node scripts/validate-novice.mjs
+          node scripts/validate-statements.mjs
+      - name: Wiring and offline cache
+        run: |
+          test -s assets/student-zero-t10t11.js
+          test -s assets/student-zero-t10t11-editorial.js
+          test -s scripts/validate-student-zero-t10t11.mjs
+          grep -q 'applyStudentZeroT10T11' assets/content.js
+          grep -q 'student-zero-t10t11.js' sw.js
+          grep -q 'student-zero-t10t11-editorial.js' sw.js
+          grep -q 'Éduscol — L.algorithme de Boyer et Moore' assets/content.js
+          grep -q 'Transition T10 → T11 : éviter du travail, mais autrement' assets/student-zero-t10t11.js
+          grep -q 'Prétraiter le motif : construire aDroite une seule fois' assets/student-zero-t10t11.js
+          grep -q 'Un saut doit être justifié, jamais deviné' assets/student-zero-t10t11.js

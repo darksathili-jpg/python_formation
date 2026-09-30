@@ -23,11 +23,13 @@ import { applyStudentZeroT6T7 } from './student-zero-t6t7.js';
 import { applyStudentZeroT7T8 } from './student-zero-t7t8.js';
 import { applyStudentZeroT8T9 } from './student-zero-t8t9.js';
 import { applyStudentZeroT9T10 } from './student-zero-t9t10.js';
+import { applyStudentZeroT10T11 } from './student-zero-t10t11.js';
 import './student-zero-t7t8-editorial.js';
 import './student-zero-t8t9-editorial.js';
 import './student-zero-t9t10-editorial.js';
+import './student-zero-t10t11-editorial.js';
 
-export const SITE_VERSION = '1.22.0';
+export const SITE_VERSION = '1.23.0';
 export const tracks = metaTracks;
 export const flashQuestions = metaFlashQuestions;
 export const scopeNotes = metaScopeNotes;
@@ -68,6 +70,12 @@ export const sources = [
     kind: 'Ressource officielle Terminale NSI · Algorithmique',
     url: 'https://eduscol.education.gouv.fr/sites/default/files/document/ra20nsigtprogdyn1298637pdf-89571.pdf',
     note: 'Appui V1.22 : sous-problèmes similaires et répétés, mémoïsation, construction systématique des états, rendu de monnaie et discussion du coût mémoire. La progression distingue clairement le raisonnement dynamique de la simple présence d’un dictionnaire ou d’une récursion.'
+  },
+  {
+    title: 'Éduscol — L’algorithme de Boyer et Moore',
+    kind: 'Ressource officielle Terminale NSI · Algorithmique',
+    url: 'https://cache.media.eduscol.education.fr/file/NSI/63/5/RA20_NSI_G_T_boyer-moore_1298635.pdf',
+    note: 'Appui V1.23 : recherche naïve, comparaison du motif de droite vers la gauche, règle du mauvais caractère, règle du bon suffixe, dictionnaire aDroite et intérêt d’un prétraitement calculé une seule fois pour un motif donné. La progression rend chaque saut explicable et n’exige pas l’analyse détaillée du coût.'
   }
 ];
 
@@ -88,6 +96,7 @@ applyStudentZeroT6T7(modules, practiceBank, primmBank, noviceBank);
 applyStudentZeroT7T8(modules, practiceBank, primmBank, noviceBank);
 applyStudentZeroT8T9(modules, practiceBank, primmBank, noviceBank);
 applyStudentZeroT9T10(modules, practiceBank, primmBank, noviceBank);
+applyStudentZeroT10T11(modules, practiceBank, primmBank, noviceBank);
 
 // Le brief éditorial d'un exercice de débogage doit expliciter le résultat observable,
 // pas seulement la correction technique à effectuer.
