@@ -65,8 +65,8 @@ export default [
   {
     id:'CAP-5', track:'terminale', title:'Arbre de diagnostic d’un robot', duration:'60 min',
     focus:'récursivité · arbres binaires · parcours', level:3, kind:'application', modules:['T1','T4'],
-    document:'Un robot de maintenance utilise un arbre binaire de diagnostic. Chaque nœud contient un code. Un nœud sans fils est une feuille. L’arbre vide est représenté par None. La convention de hauteur de cette mission est : arbre vide = 0 et feuille = 1.',
-    prompt:'Complète <code>taille(a)</code>, <code>hauteur(a)</code> et <code>prefixe(a)</code>. <code>taille</code> renvoie le nombre de nœuds, <code>hauteur</code> respecte la convention donnée, et <code>prefixe</code> renvoie les codes dans l’ordre nœud-gauche-droite.',
+    document:'Un robot de maintenance utilise un arbre binaire de diagnostic. Chaque nœud contient un code. Dans <code>Noeud(code, gauche=None, droite=None)</code>, <code>code</code> est la chaîne stockée dans le nœud et renvoyée par le parcours ; <code>gauche</code> et <code>droite</code> désignent les deux sous-arbres ou <code>None</code>. Un nœud sans fils est une feuille. L’arbre vide est représenté par <code>None</code>. La convention de hauteur est : arbre vide = 0 et feuille = 1.',
+    prompt:'Complète <code>taille(a)</code>, <code>hauteur(a)</code> et <code>prefixe(a)</code> pour un arbre <code>a</code>. <code>taille</code> renvoie le nombre de nœuds, <code>hauteur</code> respecte la convention donnée, et <code>prefixe</code> renvoie la liste des valeurs <code>code</code> dans l’ordre nœud-gauche-droite. Par exemple, pour <code>Noeud("A", Noeud("B"), Noeud("C"))</code>, <code>prefixe</code> doit renvoyer <code>["A", "B", "C"]</code>.',
     starter:"class Noeud:\n    def __init__(self, code, gauche=None, droite=None):\n        self.code = code\n        self.gauche = gauche\n        self.droite = droite\n\ndef taille(a):\n    pass\n\ndef hauteur(a):\n    pass\n\ndef prefixe(a):\n    pass",
     tests:[
       {label:'arbre vide',expr:'taille(None) == 0 and hauteur(None) == 0 and prefixe(None) == []'},
@@ -109,7 +109,7 @@ export default [
     id:'CAP-8', track:'terminale', title:'Parcours d’un drone avec zones bloquées', duration:'60 min',
     focus:'programmation dynamique · état · dépendances · tests', level:3, kind:'application', modules:['T7','T10'],
     document:'Un drone se déplace sur des positions numérotées de 0 à n. Depuis une position, il peut avancer de 1 ou 2. Certaines positions sont bloquées et ne peuvent pas être occupées. On veut compter le nombre de façons d’atteindre chaque position. L’état choisi est dp[i] = nombre de parcours qui atteignent exactement i.',
-    prompt:'Écris <code>table_chemins(n, bloques)</code> qui construit les états de 0 à n, avec <code>dp[0] = 1</code> et <code>dp[i] = 0</code> si i est bloquée. Sinon, dp[i] dépend de dp[i-1] et, si i ≥ 2, de dp[i-2]. Écris ensuite <code>nb_chemins(n, bloques)</code> qui renvoie l’état final.',
+    prompt:'Écris <code>table_chemins(n, bloques)</code> qui construit les états de 0 à n, avec <code>dp[0] = 1</code> et <code>dp[i] = 0</code> si i est bloquée. Sinon, <code>dp[i]</code> dépend de <code>dp[i-1]</code> et, si i ≥ 2, de <code>dp[i-2]</code>. Écris ensuite <code>nb_chemins(n, bloques)</code> qui renvoie le nombre de parcours atteignant exactement n. Exemple de référence : <code>table_chemins(5, {2})</code> doit renvoyer <code>[1, 1, 0, 1, 1, 2]</code> et <code>nb_chemins(5, {2})</code> doit renvoyer <code>2</code>.',
     starter:'def table_chemins(n, bloques):\n    pass\n\ndef nb_chemins(n, bloques):\n    pass',
     tests:[
       {label:'sans blocage',expr:'table_chemins(5, set()) == [1,1,2,3,5,8]'},
