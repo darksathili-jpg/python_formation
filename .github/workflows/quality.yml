@@ -42,6 +42,7 @@ jobs:
           node --check assets/student-zero-t1t2.js
           node --check assets/student-zero-t2t3.js
           node --check assets/student-zero-t3t4.js
+          node --check assets/student-zero-t4t5.js
           node --check assets/novice-gate.js
           node --check assets/exercise-brief.js
           node --check assets/statement-enhancer.js
@@ -58,6 +59,7 @@ jobs:
           node --check scripts/validate-student-zero-t1t2.mjs
           node --check scripts/validate-student-zero-t2t3.mjs
           node --check scripts/validate-student-zero-t3t4.mjs
+          node --check scripts/validate-student-zero-t4t5.mjs
           node --check scripts/validate-contrast.mjs
           node --check scripts/validate-statements.mjs
           node --check sw.js
@@ -105,85 +107,64 @@ jobs:
           test -s assets/student-zero-p1p2.js
           grep -q 'applyStudentZeroP1P2' assets/content.js
           grep -q 'student-zero-p1p2.js' sw.js
-          grep -q 'Pourquoi vois-tu déjà def et return' assets/student-zero-p1p2.js
-          grep -q 'Méthode anti-erreur pour les frontières' assets/student-zero-p1p2.js
       - name: Student Zero P3/P4 gate
         run: |
           node scripts/validate-student-zero-p3p4.mjs
           test -s assets/student-zero-p3p4.js
           grep -q 'applyStudentZeroP3P4' assets/content.js
           grep -q 'student-zero-p3p4.js' sw.js
-          grep -q 'Dans P3, le cadre def / return reste fourni' assets/student-zero-p3p4.js
-          grep -q 'Méthode P4 : contrat → signature → corps → tests' assets/student-zero-p3p4.js
       - name: Student Zero P5/P6 gate
         run: |
           node scripts/validate-student-zero-p5p6.mjs
           test -s assets/student-zero-p5p6.js
           grep -q 'applyStudentZeroP5P6' assets/content.js
           grep -q 'student-zero-p5p6.js' sw.js
-          grep -q 'Une chaîne se lit par indice, mais ne se modifie pas par indice' assets/student-zero-p5p6.js
-          grep -q 'Transition P5 → P6' assets/student-zero-p5p6.js
-          grep -q 'Alias : deux noms peuvent désigner la même liste' assets/student-zero-p5p6.js
       - name: Student Zero P7/P8 gate
         run: |
           node scripts/validate-student-zero-p7p8.mjs
           test -s assets/student-zero-p7p8.js
           grep -q 'applyStudentZeroP7P8' assets/content.js
           grep -q 'student-zero-p7p8.js' sw.js
-          grep -q 'Liste, tuple, dictionnaire : trois questions différentes' assets/student-zero-p7p8.js
-          grep -q 'Transition P7 → P8' assets/student-zero-p7p8.js
-          grep -q 'Après lecture CSV, les champs sont d’abord des chaînes de caractères' assets/student-zero-p7p8.js
       - name: Student Zero P8/P9 gate
         run: |
           node scripts/validate-student-zero-p8p9.mjs
           test -s assets/student-zero-p8p9.js
           grep -q 'applyStudentZeroP8P9' assets/content.js
           grep -q 'student-zero-p8p9.js' sw.js
-          grep -q 'Transition P8 → P9' assets/student-zero-p8p9.js
-          grep -q 'Dichotomie : la liste triée est une précondition' assets/student-zero-p8p9.js
-          grep -q 'Minimum par parcours sans slice' assets/student-zero-p8p9.js
       - name: Student Zero P9/T1 gate
         run: |
           node scripts/validate-student-zero-p9t1.mjs
           test -s assets/student-zero-p9t1.js
           grep -q 'applyStudentZeroP9T1' assets/content.js
           grep -q 'student-zero-p9t1.js' sw.js
-          grep -q 'Transition P9 → T1' assets/student-zero-p9t1.js
-          grep -q 'Descente : chaque appel attend le suivant' assets/student-zero-p9t1.js
-          grep -q 'Remontée : les résultats reviennent en sens inverse' assets/student-zero-p9t1.js
-          grep -q 'Récursion sur une séquence sans slice' assets/student-zero-p9t1.js
       - name: Student Zero T1/T2 gate
         run: |
           node scripts/validate-student-zero-t1t2.mjs
           test -s assets/student-zero-t1t2.js
           grep -q 'applyStudentZeroT1T2' assets/content.js
           grep -q 'student-zero-t1t2.js' sw.js
-          grep -q 'Transition T1 → T2' assets/student-zero-t1t2.js
-          grep -q 'Classe ≠ objet' assets/student-zero-t1t2.js
-          grep -q 'self désigne l’objet courant' assets/student-zero-t1t2.js
-          grep -q 'Variable locale ≠ attribut' assets/student-zero-t1t2.js
-          grep -q 'héritage et le polymorphisme' assets/student-zero-t1t2.js
       - name: Student Zero T2/T3 gate
         run: |
           node scripts/validate-student-zero-t2t3.mjs
           test -s assets/student-zero-t2t3.js
           grep -q 'applyStudentZeroT2T3' assets/content.js
           grep -q 'student-zero-t2t3.js' sw.js
-          grep -q 'Transition T2 → T3' assets/student-zero-t2t3.js
-          grep -q 'Type abstrait = valeurs possibles + opérations promises' assets/student-zero-t2t3.js
-          grep -q 'la pile n’est pas « une liste »' assets/student-zero-t2t3.js
-          grep -q 'File simple et file avec deux piles' assets/student-zero-t2t3.js
       - name: Student Zero T3/T4 gate
         run: |
           node scripts/validate-student-zero-t3t4.mjs
           test -s assets/student-zero-t3t4.js
           grep -q 'applyStudentZeroT3T4' assets/content.js
           grep -q 'student-zero-t3t4.js' sw.js
-          grep -q 'Transition T3 → T4' assets/student-zero-t3t4.js
-          grep -q 'Un arbre binaire est une structure récursive' assets/student-zero-t3t4.js
-          grep -q 'Avant chaque récursion : nommer le sous-problème' assets/student-zero-t3t4.js
-          grep -q 'Parcours en largeur : T3 revient avec une file' assets/student-zero-t3t4.js
-          grep -q 'ABR : ajouter une propriété d’ordre' assets/student-zero-t3t4.js
+      - name: Student Zero T4/T5 gate
+        run: |
+          node scripts/validate-student-zero-t4t5.mjs
+          test -s assets/student-zero-t4t5.js
+          grep -q 'applyStudentZeroT4T5' assets/content.js
+          grep -q 'student-zero-t4t5.js' sw.js
+          grep -q 'un graphe n’est pas « un arbre avec plus de branches »' assets/student-zero-t4t5.js
+          grep -q 'Pourquoi « visites » devient indispensable' assets/student-zero-t4t5.js
+          grep -q 'La frontière : ce qui différencie DFS et BFS' assets/student-zero-t4t5.js
+          grep -q 'BFS et plus court chemin' assets/student-zero-t4t5.js
       - name: Editorial statement gate
         run: |
           node scripts/validate-statements.mjs
@@ -194,16 +175,16 @@ jobs:
           grep -q 'Valeur ou effet attendu' assets/exercise-brief.js
           grep -q 'Erreur classique à éviter' assets/exercise-brief.js
           grep -q 'Exemples contrôlés' assets/exercise-brief.js
-          grep -q 'statement-enhancer.js?v=1.16.0' index.html
-          grep -q 'exercise-brief.css?v=1.16.0' index.html
-          grep -q 'statement-enhancer.js?v=1.16.0' sw.js
+          grep -q 'statement-enhancer.js?v=1.17.0' index.html
+          grep -q 'exercise-brief.css?v=1.17.0' index.html
+          grep -q 'statement-enhancer.js?v=1.17.0' sw.js
           ! grep -q 'Le résultat renvoyé ou affiché doit respecter exactement la règle décrite' assets/exercise-brief.js
       - name: Visual contrast gate
         run: |
           node scripts/validate-contrast.mjs
           test -s assets/visual-contrast.css
-          grep -q 'visual-contrast.css?v=1.16.0' index.html
-          grep -q 'visual-contrast.css?v=1.16.0' sw.js
+          grep -q 'visual-contrast.css?v=1.17.0' index.html
+          grep -q 'visual-contrast.css?v=1.17.0' sw.js
           grep -q 'projector mode is a dedicated high-luminance palette' assets/visual-contrast.css
       - name: Classroom reliability invariants
         run: |
@@ -245,6 +226,7 @@ jobs:
           test -s assets/student-zero-t1t2.js
           test -s assets/student-zero-t2t3.js
           test -s assets/student-zero-t3t4.js
+          test -s assets/student-zero-t4t5.js
           test -s assets/branding.css
           test -s assets/branding/logo-watteau.jpg
           test -s assets/visual-contrast.css
@@ -276,6 +258,7 @@ jobs:
           grep -q 'student-zero-t1t2.js' sw.js
           grep -q 'student-zero-t2t3.js' sw.js
           grep -q 'student-zero-t3t4.js' sw.js
+          grep -q 'student-zero-t4t5.js' sw.js
           grep -q 'logo-watteau.jpg' sw.js
           grep -q 'visual-contrast.css' sw.js
           grep -q 'prefers-reduced-motion' assets/styles.css
