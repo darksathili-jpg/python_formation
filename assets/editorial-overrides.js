@@ -15,6 +15,14 @@ const RESULT_OVERRIDES = {
   'T1-X1':'La fonction doit renvoyer une chaîne constituée de n répétitions successives de c. Lorsque n vaut 0, elle doit renvoyer la chaîne vide.',
   'T1-X2':'La fonction doit renvoyer le nombre d’éléments de tab restant à compter à partir de l’indice i inclus. Si i vaut len(tab), elle renvoie 0.',
   'T1-X4':'La fonction doit renvoyer la puissance entière a exposant n selon les règles récursives fournies. Pour n égal à 0, le résultat doit être 1.',
+  'T3-E1':'La classe doit respecter l’ordre LIFO : depiler() renvoie le dernier élément empilé. est_vide() vaut True au départ et une tentative de dépiler une pile vide déclenche AssertionError.',
+  'T3-E2':'La fonction doit renvoyer True seulement si toutes les parenthèses ouvrantes et fermantes de texte sont correctement appariées et imbriquées ; une fermeture trop tôt ou une ouverture restante donne False.',
+  'T3-E3':'La file doit respecter FIFO : defiler() renvoie toujours l’élément présent depuis le plus longtemps. est_vide() est vrai seulement lorsque les deux piles internes sont vides.',
+  'T3-X1':'PileCartes doit respecter LIFO : après avoir empilé A puis B, depiler() renvoie B ; est_vide() doit être vrai pour une nouvelle pile.',
+  'T3-X2':'FileGuichet doit respecter FIFO : après l’arrivée de Ada puis Alan, le premier appel à defiler() renvoie Ada ; est_vide() décrit correctement l’absence de personne en attente.',
+  'T3-X3':'Après correction, la classe File doit servir les éléments dans leur ordre d’arrivée : A puis B lorsque A a été enfilé avant B.',
+  'T3-X4':'annuler(pile) doit renvoyer None si la pile est vide ; sinon la fonction retire et renvoie le dernier état empilé sans accéder aux attributs internes de la pile.',
+  'T3-X5':'FileTickets doit conserver un comportement FIFO malgré ses deux piles internes : les tickets ressortent dans leur ordre d’arrivée, y compris après alternance d’ajouts et de retraits.',
   'T8-E1':'La fonction doit renvoyer f(f(x)) : elle applique une première fois f à x, puis applique une seconde fois la même fonction au résultat obtenu.',
   'T4-X5':'La fonction doit renvoyer la racine de l’ABR après insertion de x. Si l’arbre initial est vide, le nouveau nœud contenant x devient la racine ; sinon la racine existante est conservée.',
   'T11-X5':'La fonction doit renvoyer True si le motif apparaît dans le texte et False sinon. Le motif vide est considéré comme présent. La recherche doit utiliser la stratégie de Horspool simplifiée demandée.'
@@ -71,6 +79,30 @@ const PARAM_OVERRIDES = {
     a:'premier objet Point qui constitue une extrémité du segment',
     b:'second objet Point qui constitue l’autre extrémité du segment'
   },
+  'T3-E1':{
+    x:'élément quelconque à placer au sommet de la pile ; il doit devenir le prochain élément dépilé'
+  },
+  'T3-E2':{
+    texte:'chaîne de caractères à analyser ; seuls les caractères parenthèse ouvrante et parenthèse fermante influencent la pile'
+  },
+  'T3-E3':{
+    x:'élément à ajouter à l’arrière logique de la file ; il doit ressortir après les éléments enfilés avant lui'
+  },
+  'T3-X1':{
+    carte:'valeur représentant la carte à placer au sommet de PileCartes ; la dernière carte empilée doit être la première dépilée'
+  },
+  'T3-X2':{
+    personne:'valeur représentant la personne qui rejoint l’arrière de la file ; les personnes doivent être servies selon leur ordre d’arrivée'
+  },
+  'T3-X3':{
+    x:'élément ajouté à la file par enfiler ; il doit être retiré après tous les éléments arrivés avant lui'
+  },
+  'T3-X4':{
+    pile:'objet respectant l’interface empiler, depiler et est_vide ; la fonction annuler ne doit dépendre d’aucun attribut interne'
+  },
+  'T3-X5':{
+    ticket:'ticket à placer dans la file ; les tickets doivent ressortir dans leur ordre d’arrivée'
+  },
   'T5-E3':{
     g:'graphe non pondéré représenté par un dictionnaire sommet → liste de voisins',
     depart:'sommet à partir duquel commence le parcours en largeur',
@@ -88,9 +120,6 @@ const PARAM_OVERRIDES = {
     longueur:'nombre de caractères du mot de passe à vérifier',
     chiffre:'booléen indiquant si le mot de passe contient au moins un chiffre',
     interdit:'booléen indiquant si le mot de passe est marqué comme interdit'
-  },
-  'T3-X5':{
-    ticket:'ticket à placer dans la file ; les tickets doivent ressortir dans leur ordre d’arrivée'
   },
   'T6-X3':{
     cur:'curseur de base de données sur lequel exécuter la requête paramétrée',
