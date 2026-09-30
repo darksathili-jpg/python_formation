@@ -22,10 +22,12 @@ import { applyStudentZeroT5T6 } from './student-zero-t5t6.js';
 import { applyStudentZeroT6T7 } from './student-zero-t6t7.js';
 import { applyStudentZeroT7T8 } from './student-zero-t7t8.js';
 import { applyStudentZeroT8T9 } from './student-zero-t8t9.js';
+import { applyStudentZeroT9T10 } from './student-zero-t9t10.js';
 import './student-zero-t7t8-editorial.js';
 import './student-zero-t8t9-editorial.js';
+import './student-zero-t9t10-editorial.js';
 
-export const SITE_VERSION = '1.21.0';
+export const SITE_VERSION = '1.22.0';
 export const tracks = metaTracks;
 export const flashQuestions = metaFlashQuestions;
 export const scopeNotes = metaScopeNotes;
@@ -60,6 +62,12 @@ export const sources = [
     kind: 'Ressource officielle Terminale NSI · Algorithmique',
     url: 'https://eduscol.education.fr/document/10100/download',
     note: 'Appui V1.21 : méthode Diviser → Résoudre → Combiner avec cas de base, réinvestissement de la récursivité et étude du tri fusion. La progression reconstruit qualitativement le coût en n log n par niveaux plutôt que de le faire mémoriser comme une étiquette.'
+  },
+  {
+    title: 'Éduscol — Programmation dynamique',
+    kind: 'Ressource officielle Terminale NSI · Algorithmique',
+    url: 'https://eduscol.education.gouv.fr/sites/default/files/document/ra20nsigtprogdyn1298637pdf-89571.pdf',
+    note: 'Appui V1.22 : sous-problèmes similaires et répétés, mémoïsation, construction systématique des états, rendu de monnaie et discussion du coût mémoire. La progression distingue clairement le raisonnement dynamique de la simple présence d’un dictionnaire ou d’une récursion.'
   }
 ];
 
@@ -79,6 +87,7 @@ applyStudentZeroT5T6(modules, practiceBank, primmBank, noviceBank);
 applyStudentZeroT6T7(modules, practiceBank, primmBank, noviceBank);
 applyStudentZeroT7T8(modules, practiceBank, primmBank, noviceBank);
 applyStudentZeroT8T9(modules, practiceBank, primmBank, noviceBank);
+applyStudentZeroT9T10(modules, practiceBank, primmBank, noviceBank);
 
 // Le brief éditorial d'un exercice de débogage doit expliciter le résultat observable,
 // pas seulement la correction technique à effectuer.
