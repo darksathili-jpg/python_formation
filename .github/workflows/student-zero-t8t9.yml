@@ -1,0 +1,44 @@
+name: Student Zero T8-T9 gate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  divide-conquer-cost-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - name: Syntax
+        run: |
+          node --check assets/student-zero-t8t9.js
+          node --check assets/student-zero-t8t9-editorial.js
+          node --check scripts/validate-student-zero-t8t9.mjs
+          node --check assets/content.js
+          node --check sw.js
+      - name: Student Zero T8/T9
+        run: node scripts/validate-student-zero-t8t9.mjs
+      - name: Regression gates
+        run: |
+          node scripts/validate-exercises.mjs
+          node scripts/validate-novice.mjs
+          node scripts/validate-statements.mjs
+      - name: Wiring and offline cache
+        run: |
+          test -s assets/student-zero-t8t9.js
+          test -s assets/student-zero-t8t9-editorial.js
+          test -s scripts/validate-student-zero-t8t9.mjs
+          grep -q 'applyStudentZeroT8T9' assets/content.js
+          grep -q 'student-zero-t8t9.js' sw.js
+          grep -q 'student-zero-t8t9-editorial.js' sw.js
+          grep -q 'Éduscol — Diviser pour régner' assets/content.js
+          grep -q 'Transition T8 → T9 : existence ≠ efficacité' assets/student-zero-t8t9.js
+          grep -q 'Diviser pour régner : quatre questions, pas trois slogans' assets/student-zero-t8t9.js
+          grep -q 'Tri fusion : n éléments par niveau, environ log₂(n) niveaux' assets/student-zero-t8t9.js
