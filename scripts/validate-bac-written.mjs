@@ -24,7 +24,7 @@ for (const [year, count] of Object.entries(expectedByYear)) {
   need(subjects.filter(subject => subject.year === Number(year)).length === count, `${year}: ${count} sujets attendus`);
 }
 need(subjects.every(subject => /^https:\/\/eduscol\.education\.gouv\.fr\/sites\/default\/files\//.test(subject.url)), 'Chaque sujet doit pointer vers son PDF officiel Eduscol');
-need(subjects.reduce((sum, subject) => sum + subject.themes.length, 0) === 219, '219 sections/exercices thématiques doivent être indexés');
+need(subjects.reduce((sum, subject) => sum + subject.themes.length, 0) === 220, '220 sections/exercices thématiques doivent être indexés');
 
 const current = subjects.filter(subject => subject.year === 2026);
 need(current.length === 12, '12 sujets 2026 attendus');
@@ -69,4 +69,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log('Bac Written Training V1.27: 79 sujets officiels, 219 exercices indexés, 12 drills, annales guidées, sujet blanc 3 h 30, métacognition et cache hors ligne — OK');
+console.log('Bac Written Training V1.27: 79 sujets officiels, 220 thèmes/exercices indexés, 12 drills, annales guidées, sujet blanc 3 h 30, métacognition et cache hors ligne — OK');
