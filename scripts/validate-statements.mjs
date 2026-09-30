@@ -34,7 +34,7 @@ for(const {ex,module} of all){
   if(/undefined|null/.test(html)) errors.push(`${ex.id}: valeur indéfinie dans le rendu`);
 }
 
-if(all.length!==164) errors.push(`Couverture: ${all.length} exercices au lieu de 164`);
+if(all.length!==169) errors.push(`Couverture: ${all.length} exercices au lieu de 169`);
 const coveredModules=new Set(all.map(({module,ex})=>module?.id||ex.moduleId).filter(Boolean));
 if(coveredModules.size!==20) errors.push(`Couverture modules: ${coveredModules.size}/20`);
 

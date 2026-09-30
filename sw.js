@@ -1,4 +1,4 @@
-const APP_VERSION = '1.23.0';
+const APP_VERSION = '1.24.0';
 const PYODIDE_VERSION = '314.0.7';
 const SHELL_CACHE = `python-forge-shell-v${APP_VERSION}`;
 const RUNTIME_CACHE = `python-forge-pyodide-${PYODIDE_VERSION}`;
@@ -20,6 +20,8 @@ const SHELL = [
   './assets/pedagogy-engine.js?v=1.17.0',
   './assets/novice-gate.js?v=1.17.0',
   './assets/statement-enhancer.js?v=1.17.0',
+  './assets/terminale-transversal-ui.js?v=1.24.0',
+  './assets/terminale-transversal.js',
   './assets/exercise-brief.js',
   './assets/editorial-overrides.js',
   './assets/student-zero-p1p2.js',
