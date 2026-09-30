@@ -23,8 +23,8 @@ need(evidence.includes('setTextIfChanged'), 'Garde-fou contre les boucles de Mut
 need(evidence.includes("Aucun nom de chapitre n'est demandé"), 'La consigne ne doit pas annoncer le chapitre à mobiliser');
 
 need(index.includes('assets/bac-readiness-evidence.js?v=1.26.0'), 'Couche Recognition Evidence absente de index.html');
-need(index.includes('V1.26'), 'Version V1.26 absente du footer');
-need(sw.includes("APP_VERSION = '1.26.0'"), 'Service worker non basculé en V1.26.0');
+need(/V1\.(?:2[7-9]|[3-9]\d)/.test(index), 'Shell applicatif antérieur à V1.27');
+need(sw.includes("APP_VERSION = '1.27.0'"), 'Service worker non basculé sur le shell V1.27.0');
 need(sw.includes("'./assets/bac-readiness-evidence.js?v=1.26.0'"), 'Recognition Evidence absente du cache hors ligne');
 need(workflow.includes('node --check assets/bac-readiness-evidence.js'), 'Syntax check Recognition Evidence absent de la CI');
 need(workflow.includes('node scripts/validate-bac-readiness-evidence.mjs'), 'Validation Recognition Evidence absente de la CI');
@@ -34,4 +34,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log('Bac Readiness V1.26 Recognition Evidence: stratégie avant premier test, anti-rattrapage a posteriori, tentatives, reset cohérent, gate strict et cache hors ligne — OK');
+console.log('Bac Readiness V1.26 Recognition Evidence sous shell V1.27+: stratégie avant premier test, anti-rattrapage a posteriori, tentatives, reset cohérent, gate strict et cache hors ligne — OK');
