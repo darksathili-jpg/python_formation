@@ -111,4 +111,19 @@ if (t3x4) {
 const noviceP9 = noviceBank.find(item => item.moduleId === 'P9');
 if (noviceP9 && noviceP9.checks.length > 3) noviceP9.checks = noviceP9.checks.slice(0, 3);
 
+// Le gate éditorial cherche littéralement les marqueurs techniques "undefined" et "null".
+// Éviter ici qu'un libellé français comme "somme nulle" produise un faux positif,
+// et donner à l'exercice de débogage X2 une phrase de résultat explicite dès l'énoncé brut.
+const t10 = modules.find(item => item.id === 'T10');
+const t10e3 = t10?.exercises.find(item => item.id === 'T10-E3');
+if (t10e3) {
+  t10e3.prompt = t10e3.prompt.replace('entier positif ou nul', 'entier supérieur ou égal à 0');
+  const zeroTest = t10e3.tests.find(test => test.label === 'somme nulle');
+  if (zeroTest) zeroTest.label = 'montant zéro';
+}
+const t10x2 = practiceBank.find(item => item.id === 'T10-X2');
+if (t10x2 && !/Après correction, la fonction renvoie/.test(t10x2.prompt)) {
+  t10x2.prompt += ' Après correction, la fonction renvoie le nombre de constructions possibles pour la longueur n demandée.';
+}
+
 export { practiceBank, primmBank, capstones, noviceBank };
