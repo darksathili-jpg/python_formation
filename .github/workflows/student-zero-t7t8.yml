@@ -32,9 +32,10 @@ jobs:
       - name: Wiring and offline cache
         run: |
           grep -q 'applyStudentZeroT7T8' assets/content.js
-          grep -q "SITE_VERSION = '1.20.0'" assets/content.js
-          grep -q "APP_VERSION = '1.20.0'" sw.js
           grep -q 'student-zero-t7t8.js' sw.js
-          grep -q 'V1.20' index.html
+          grep -q 'student-zero-t7t8-editorial.js' sw.js
+          grep -q 'Éduscol — le paradigme fonctionnel' assets/content.js
+          grep -q 'Éduscol — calculabilité et décidabilité' assets/content.js
           test -s assets/student-zero-t7t8.js
+          test -s assets/student-zero-t7t8-editorial.js
           test -s scripts/validate-student-zero-t7t8.mjs

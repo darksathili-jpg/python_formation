@@ -21,9 +21,11 @@ import { applyStudentZeroT4T5 } from './student-zero-t4t5.js';
 import { applyStudentZeroT5T6 } from './student-zero-t5t6.js';
 import { applyStudentZeroT6T7 } from './student-zero-t6t7.js';
 import { applyStudentZeroT7T8 } from './student-zero-t7t8.js';
+import { applyStudentZeroT8T9 } from './student-zero-t8t9.js';
 import './student-zero-t7t8-editorial.js';
+import './student-zero-t8t9-editorial.js';
 
-export const SITE_VERSION = '1.20.0';
+export const SITE_VERSION = '1.21.0';
 export const tracks = metaTracks;
 export const flashQuestions = metaFlashQuestions;
 export const scopeNotes = metaScopeNotes;
@@ -52,6 +54,12 @@ export const sources = [
     kind: 'Ressource officielle Terminale NSI',
     url: 'https://eduscol.education.fr/document/30082/download',
     note: 'Appui V1.20 pour distinguer calculabilité, problèmes de décision, décidabilité et indécidabilité, et pour présenter sans formalisme théorique lourd le problème de l’arrêt.'
+  },
+  {
+    title: 'Éduscol — Diviser pour régner',
+    kind: 'Ressource officielle Terminale NSI · Algorithmique',
+    url: 'https://eduscol.education.fr/document/10100/download',
+    note: 'Appui V1.21 : méthode Diviser → Résoudre → Combiner avec cas de base, réinvestissement de la récursivité et étude du tri fusion. La progression reconstruit qualitativement le coût en n log n par niveaux plutôt que de le faire mémoriser comme une étiquette.'
   }
 ];
 
@@ -70,6 +78,7 @@ applyStudentZeroT4T5(modules, practiceBank, primmBank, noviceBank);
 applyStudentZeroT5T6(modules, practiceBank, primmBank, noviceBank);
 applyStudentZeroT6T7(modules, practiceBank, primmBank, noviceBank);
 applyStudentZeroT7T8(modules, practiceBank, primmBank, noviceBank);
+applyStudentZeroT8T9(modules, practiceBank, primmBank, noviceBank);
 
 // Le brief éditorial d'un exercice de débogage doit expliciter le résultat observable,
 // pas seulement la correction technique à effectuer.
