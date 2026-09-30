@@ -15,7 +15,7 @@ Le corpus fourni contient **79 sujets officiels Eduscol** :
 - 2025 : 15 sujets ;
 - 2026 : 12 sujets.
 
-L’index automatique contient **219 sections ou exercices thématiques**. Les formulations anciennes sont conservées comme annales d’entraînement ; les sujets 2026 sont signalés comme référence prioritaire car leur structure à trois exercices est la plus proche du cadre de l’épreuve actuelle.
+L’index contient actuellement **220 thèmes ou sections d’exercices identifiés**. Le contrôle manuel du sujet Antilles-Guyane 2026 sujet 2 a corrigé une omission de l’extraction automatique : ce sujet comporte bien trois exercices, dont le troisième traite de tableaux, dictionnaires, récursivité et programmation dynamique. Les formulations anciennes sont conservées comme annales d’entraînement ; les sujets 2026 sont signalés comme référence prioritaire car leur structure à trois exercices est la plus proche du cadre de l’épreuve actuelle.
 
 Les PDF ne sont pas dupliqués dans le dépôt : l’application ouvre les documents officiels Eduscol.
 
