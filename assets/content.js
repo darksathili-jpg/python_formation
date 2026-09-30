@@ -6,6 +6,7 @@ import practiceBank from './practice-bank.js';
 import primmBank from './primm-bank.js';
 import capstones from './capstone-bank.js';
 import noviceBank from './novice-bank.js';
+import { tracks as metaTracks, flashQuestions as metaFlashQuestions, sources as metaSources, scopeNotes as metaScopeNotes } from './content-meta.js';
 import { applyNoviceContentFixes } from './novice-overrides.js';
 import { applyStudentZeroP1P2 } from './student-zero-p1p2.js';
 import { applyStudentZeroP3P4 } from './student-zero-p3p4.js';
@@ -17,7 +18,22 @@ import { applyStudentZeroT1T2 } from './student-zero-t1t2.js';
 import { applyStudentZeroT2T3 } from './student-zero-t2t3.js';
 import { applyStudentZeroT3T4 } from './student-zero-t3t4.js';
 import { applyStudentZeroT4T5 } from './student-zero-t4t5.js';
-export { SITE_VERSION, tracks, flashQuestions, sources, scopeNotes } from './content-meta.js';
+import { applyStudentZeroT5T6 } from './student-zero-t5t6.js';
+
+export const SITE_VERSION = '1.18.0';
+export const tracks = metaTracks;
+export const flashQuestions = metaFlashQuestions;
+export const scopeNotes = metaScopeNotes;
+export const sources = [
+  ...metaSources,
+  {
+    title: 'Éduscol — bases de données : modèle relationnel et SQL',
+    kind: 'Ressource officielle Terminale NSI',
+    url: 'https://eduscol.education.gouv.fr/5823/programmes-et-ressources-en-numerique-et-sciences-informatiques-voie-g',
+    note: 'Appui V1.18 pour construire relation, attribut, domaine, tuple, schéma relationnel, clés primaire/étrangère, jointures et requêtes SQL sans confondre le modèle relationnel avec les structures Python.'
+  }
+];
+
 export const modules = [...p1, ...p2, ...t1, ...t2];
 applyNoviceContentFixes(modules, practiceBank, noviceBank);
 applyStudentZeroP1P2(modules, practiceBank, primmBank, noviceBank);
@@ -30,6 +46,7 @@ applyStudentZeroT1T2(modules, practiceBank, primmBank, noviceBank);
 applyStudentZeroT2T3(modules, practiceBank, primmBank, noviceBank);
 applyStudentZeroT3T4(modules, practiceBank, primmBank, noviceBank);
 applyStudentZeroT4T5(modules, practiceBank, primmBank, noviceBank);
+applyStudentZeroT5T6(modules, practiceBank, primmBank, noviceBank);
 
 // T3-X4 teste un code client contre une pile complète : l’exercice doit donc être autonome
 // dans le Python Lab, sans dépendre d’un exercice exécuté auparavant.
@@ -42,4 +59,5 @@ if (t3x4) {
 
 const noviceP9 = noviceBank.find(item => item.moduleId === 'P9');
 if (noviceP9 && noviceP9.checks.length > 3) noviceP9.checks = noviceP9.checks.slice(0, 3);
+
 export { practiceBank, primmBank, capstones, noviceBank };
