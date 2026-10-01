@@ -5,6 +5,7 @@ await import('../assets/bac-written-editorial-fix.js');
 const errors = [];
 const need = (condition, message) => { if (!condition) errors.push(message); };
 const patch = fs.readFileSync('assets/bac-written-layout-fix.css', 'utf8');
+const editorial = fs.readFileSync('assets/bac-written-editorial-fix.js', 'utf8');
 const base = fs.readFileSync('assets/styles.css', 'utf8');
 const written = fs.readFileSync('assets/bac-written.css', 'utf8');
 const index = fs.readFileSync('index.html', 'utf8');
@@ -27,17 +28,25 @@ need(patch.includes('@media(max-width:760px)') && patch.includes('grid-template-
 need(patch.includes('#written-training-lab .section-head') && patch.includes('flex-direction:column'), 'Entêtes de section non protégés sur mobile');
 need(patch.includes('html.projector #written-training-lab'), 'Mode vidéoprojecteur non traité par le correctif');
 
+// Navigation des annales guidées : attendre le rerendu, puis descendre sous l'en-tête fixe.
+need(editorial.includes('[data-written-guide-subject],[data-written-adaptive]'), 'Déclencheur de navigation vers la zone guidée absent');
+need(editorial.includes('MutationObserver(scrollToGuidedWritingArea)'), 'Attente du rerendu avant défilement absente');
+need(editorial.includes("document.querySelector('#written-guided')"), 'Cible #written-guided absente');
+need(editorial.includes('scrollIntoView({'), 'Défilement programmatique vers la zone guidée absent');
+need(editorial.includes("prefers-reduced-motion: reduce"), 'Le défilement guidé ne respecte pas reduced-motion');
+need(patch.includes('#written-guided') && patch.includes('scroll-margin-top:104px'), 'Marge de défilement sous l’en-tête fixe absente');
+
 // Les fondations générales doivent rester présentes : thèmes, clavier, mobile et réduction des animations.
 need(base.includes('html[data-theme="light"]') && written.includes('html[data-theme="light"] #written-training-lab'), 'Mode clair incomplet');
 need(base.includes(':focus-visible'), 'Focus clavier global absent');
 need(base.includes('@media(max-width:980px)') && base.includes('@media(max-width:620px)'), 'Breakpoints généraux du site absents');
 need(base.includes('@media(prefers-reduced-motion:reduce)'), 'Préférence reduced-motion non respectée');
 
-// Intégration et hors-ligne : nouveaux correctifs à URL versionnée.
-for (const asset of ['assets/bac-written-layout-fix.css?v=1.31.1','assets/bac-written-editorial-fix.js?v=1.31.1']) {
+// Intégration et hors-ligne : correctifs à URL versionnée.
+for (const asset of ['assets/bac-written-layout-fix.css?v=1.31.2','assets/bac-written-editorial-fix.js?v=1.31.2']) {
   need(index.includes(asset), `index.html ne charge pas ${asset}`);
 }
-for (const asset of ['bac-written-layout-fix.css?v=1.31.1','bac-written-editorial-fix.js?v=1.31.1']) {
+for (const asset of ['bac-written-layout-fix.css?v=1.31.2','bac-written-editorial-fix.js?v=1.31.2']) {
   need(sw.includes(asset), `Cache hors ligne incomplet : ${asset}`);
 }
 
@@ -46,4 +55,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log('Layout Quality Gate — OK | libellé académique · hiérarchie des contrôles · 44 px · tablette 920 px · mobile 760 px · clair/sombre · vidéoprojecteur · clavier · hors-ligne');
+console.log('Layout Quality Gate — OK | libellé académique · hiérarchie des contrôles · navigation annales guidées · 44 px · tablette 920 px · mobile 760 px · clair/sombre · vidéoprojecteur · clavier · hors-ligne');
