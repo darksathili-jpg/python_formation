@@ -24,11 +24,12 @@ jobs:
           node --check assets/bac-written-2023.js
           node --check assets/bac-written-2024.js
           node --check assets/bac-written-2025.js
+          node --check assets/bac-written-pdf-index.js
           node --check assets/bac-written-detailed.js
           node --check assets/bac-written-bootstrap.js
           node --check assets/bac-written-ui.js
           node --check scripts/validate-bac-written.mjs
-      - name: Written training model and corpus
+      - name: Written training model and verified corpus
         run: node scripts/validate-bac-written.mjs
       - name: Preserve Bac Readiness gate
         run: node scripts/validate-bac-readiness.mjs
