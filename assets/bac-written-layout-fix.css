@@ -1,0 +1,95 @@
+/* PYTHON//FORGE — audit de mise en page Écrit Bac V1.31.1
+   Correctif ciblé : hiérarchie des contrôles, lisibilité, tactile, tablette et vidéoprojecteur. */
+
+#written-training-lab .written-filterbar{
+  grid-template-columns:minmax(280px,1.25fr) minmax(180px,.75fr) minmax(220px,1fr);
+  gap:.85rem;
+  align-items:start;
+}
+#written-training-lab .written-filterbar>label{
+  min-width:0;
+  gap:.38rem;
+  font-size:.88rem;
+  line-height:1.3;
+}
+#written-training-lab .written-filterbar select,
+#written-training-lab .written-filterbar input{
+  min-width:0;
+  min-height:44px;
+}
+#written-training-lab .written-filterbar select{
+  text-overflow:ellipsis;
+}
+
+/* Une compétence est une information, pas un bouton : on supprime la fausse affordance de la grande pilule. */
+#written-training-lab .written-filterbar>label:last-child .written-badge{
+  display:inline-flex;
+  align-items:center;
+  justify-self:start;
+  min-height:44px;
+  max-width:100%;
+  border-radius:12px;
+  padding:.62rem .78rem;
+  font-size:.86rem;
+  line-height:1.25;
+  letter-spacing:0;
+  overflow-wrap:anywhere;
+  background:color-mix(in srgb,var(--w-accent) 9%,var(--w-panel));
+  border-color:color-mix(in srgb,var(--w-accent) 34%,var(--w-line));
+}
+
+#written-training-lab .written-progress{
+  height:10px;
+}
+#written-training-lab .written-tabs button,
+#written-training-lab .written-actions .btn,
+#written-training-lab .written-priority button{
+  min-height:44px;
+}
+#written-training-lab .written-hero-main,
+#written-training-lab .written-format-card,
+#written-training-lab .written-panel,
+#written-training-lab .written-card,
+#written-training-lab .written-drill,
+#written-training-lab .written-subject-card,
+#written-training-lab .written-method-card{
+  min-width:0;
+}
+
+/* Tablette : deux colonnes, la compétence prend une ligne entière au lieu d'être comprimée. */
+@media(max-width:920px){
+  #written-training-lab .written-filterbar{
+    grid-template-columns:minmax(0,1.2fr) minmax(180px,.8fr);
+  }
+  #written-training-lab .written-filterbar>label:last-child{
+    grid-column:1/-1;
+  }
+  #written-training-lab .written-filterbar>label:last-child .written-badge{
+    justify-self:stretch;
+  }
+}
+
+/* Mobile : une seule colonne, titres et actions sans compression horizontale. */
+@media(max-width:760px){
+  #written-training-lab .written-filterbar{
+    grid-template-columns:1fr;
+  }
+  #written-training-lab .written-filterbar>label:last-child{
+    grid-column:auto;
+  }
+  #written-training-lab .section-head{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  #written-training-lab .written-tabs button{
+    flex:1 1 auto;
+  }
+}
+
+/* Vidéoprojecteur : conserver une lecture nette à distance sans transformer les badges en boutons géants. */
+html.projector #written-training-lab .written-filterbar>label{
+  font-size:.92rem;
+}
+html.projector #written-training-lab .written-filterbar>label:last-child .written-badge{
+  font-size:.92rem;
+}
