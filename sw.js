@@ -18,6 +18,7 @@ const SHELL = [
   './assets/bac-readiness.css?v=1.25.0',
   './assets/bac-written.css?v=1.29.0',
   './assets/bac-exam-studio.css?v=1.30.0',
+  './assets/bac-exam-studio-contrast.css?v=1.30.0',
   './assets/app.js?v=1.17.0',
   './assets/pedagogy-bootstrap.js?v=1.17.0',
   './assets/pedagogy-engine.js?v=1.17.0',
