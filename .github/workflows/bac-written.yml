@@ -29,15 +29,35 @@ jobs:
           node --check assets/bac-written-detailed.js
           node --check assets/bac-written-bootstrap.js
           node --check assets/bac-written-ui.js
+          node --check assets/bac-exam-studio-pack-tools.js
+          node --check assets/bac-exam-studio-catalog.js
           node --check assets/bac-exam-studio-bank.js
+          node --check assets/bac-exam-studio-2026-an1-extra.js
+          node --check assets/bac-exam-studio-2026-an2.js
+          node --check assets/bac-exam-studio-2026-ag1.js
+          node --check assets/bac-exam-studio-2026-ag2.js
+          node --check assets/bac-exam-studio-2026-ja1.js
+          node --check assets/bac-exam-studio-2026-ja2.js
+          node --check assets/bac-exam-studio-2026-g11.js
+          node --check assets/bac-exam-studio-2026-g12.js
+          node --check assets/bac-exam-studio-2026-me1.js
+          node --check assets/bac-exam-studio-2026-me2.js
+          node --check assets/bac-exam-studio-2026-po1.js
+          node --check assets/bac-exam-studio-2026-po2.js
           node --check assets/bac-exam-studio.js
           node --check scripts/validate-bac-written.mjs
           node --check scripts/validate-bac-exam-studio.mjs
+          node --check scripts/validate-bac-exam-gold-2026.mjs
+          node --check scripts/validate-bac-exam-student-zero.mjs
           node --check scripts/validate-bac-exam-contrast.mjs
       - name: Written training model, semantics and verified corpus
         run: node scripts/validate-bac-written.mjs
       - name: Bac Exam Studio pedagogy and performance budgets
         run: node scripts/validate-bac-exam-studio.mjs
+      - name: Full 2026 Gold corpus
+        run: node scripts/validate-bac-exam-gold-2026.mjs
+      - name: Student Zero instrumentation
+        run: node scripts/validate-bac-exam-student-zero.mjs
       - name: Bac Exam Studio numeric contrast gate
         run: node scripts/validate-bac-exam-contrast.mjs
       - name: Preserve Bac Readiness gate
