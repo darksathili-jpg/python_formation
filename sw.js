@@ -1,4 +1,4 @@
-const APP_VERSION = '1.30.0';
+const APP_VERSION = '1.31.0';
 const PYODIDE_VERSION = '314.0.7';
 const SHELL_CACHE = `python-forge-shell-v${APP_VERSION}`;
 const RUNTIME_CACHE = `python-forge-pyodide-${PYODIDE_VERSION}`;
@@ -19,6 +19,7 @@ const SHELL = [
   './assets/bac-written.css?v=1.29.0',
   './assets/bac-exam-studio.css?v=1.30.0',
   './assets/bac-exam-studio-contrast.css?v=1.30.0',
+  './assets/bac-exam-studio-v131.css?v=1.31.0',
   './assets/app.js?v=1.17.0',
   './assets/pedagogy-bootstrap.js?v=1.17.0',
   './assets/pedagogy-engine.js?v=1.17.0',
@@ -40,8 +41,22 @@ const SHELL = [
   './assets/bac-written-2023.js',
   './assets/bac-written-2024.js',
   './assets/bac-written-2025.js',
-  './assets/bac-exam-studio.js?v=1.30.0',
+  './assets/bac-exam-studio.js?v=1.31.0',
+  './assets/bac-exam-studio-catalog.js',
+  './assets/bac-exam-studio-pack-tools.js',
   './assets/bac-exam-studio-bank.js',
+  './assets/bac-exam-studio-2026-an1-extra.js',
+  './assets/bac-exam-studio-2026-an2.js',
+  './assets/bac-exam-studio-2026-ag1.js',
+  './assets/bac-exam-studio-2026-ag2.js',
+  './assets/bac-exam-studio-2026-ja1.js',
+  './assets/bac-exam-studio-2026-ja2.js',
+  './assets/bac-exam-studio-2026-g11.js',
+  './assets/bac-exam-studio-2026-g12.js',
+  './assets/bac-exam-studio-2026-me1.js',
+  './assets/bac-exam-studio-2026-me2.js',
+  './assets/bac-exam-studio-2026-po1.js',
+  './assets/bac-exam-studio-2026-po2.js',
   './assets/exercise-brief.js',
   './assets/editorial-overrides.js',
   './assets/student-zero-p1p2.js',
