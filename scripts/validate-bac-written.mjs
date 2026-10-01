@@ -76,7 +76,7 @@ need(css.includes('.written-filterbar select') && css.includes('color:var(--text
 need(index.includes('href="#written"') && index.includes('data-route-link="written"'), 'Navigation Écrit Bac absente');
 need(index.includes('assets/bac-written.css?v=1.29.0'), 'CSS Written Training Lab V1.29 absent');
 need(index.includes('assets/bac-written-bootstrap.js?v=1.29.0'), 'Bootstrap corpus V1.29 absent');
-need(sw.includes("APP_VERSION = '1.30.0'"), 'Service worker non basculé en V1.30.0');
+need(sw.includes("APP_VERSION = '1.31.0'"), 'Service worker non basculé en V1.31.0');
 for (const asset of ['bac-written-bootstrap.js','bac-written-ui.js','bac-written-corpus.js','bac-written-detailed.js','bac-written-semantics.js','bac-written-pdf-index.js','bac-written-2021.js','bac-written-2022.js','bac-written-2023.js','bac-written-2024.js','bac-written-2025.js']) {
   need(sw.includes(asset), `Cache hors ligne incomplet : ${asset} absent`);
 }
