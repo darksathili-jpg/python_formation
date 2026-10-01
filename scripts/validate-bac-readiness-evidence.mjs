@@ -24,7 +24,10 @@ need(evidence.includes("Aucun nom de chapitre n'est demandé"), 'La consigne ne 
 
 need(index.includes('assets/bac-readiness-evidence.js?v=1.26.0'), 'Couche Recognition Evidence absente de index.html');
 need(/V1\.(?:2[7-9]|[3-9]\d)/.test(index), 'Shell applicatif antérieur à V1.27');
-need(sw.includes("APP_VERSION = '1.27.0'"), 'Service worker non basculé sur le shell V1.27.0');
+const shellVersionMatch = sw.match(/APP_VERSION = '(\d+)\.(\d+)\.(\d+)'/);
+const shellVersion = shellVersionMatch ? shellVersionMatch.slice(1).map(Number) : null;
+need(Boolean(shellVersion), 'Version du service worker introuvable');
+need(Boolean(shellVersion) && (shellVersion[0] > 1 || (shellVersion[0] === 1 && shellVersion[1] >= 27)), 'Service worker antérieur au shell V1.27.0');
 need(sw.includes("'./assets/bac-readiness-evidence.js?v=1.26.0'"), 'Recognition Evidence absente du cache hors ligne');
 need(workflow.includes('node --check assets/bac-readiness-evidence.js'), 'Syntax check Recognition Evidence absent de la CI');
 need(workflow.includes('node scripts/validate-bac-readiness-evidence.mjs'), 'Validation Recognition Evidence absente de la CI');
