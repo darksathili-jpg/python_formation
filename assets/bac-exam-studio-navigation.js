@@ -139,7 +139,8 @@ function installTopbarObserver() {
 }
 
 function removeLegacyDrawer(root = document) {
-  root.querySelectorAll?.('.studio-source-drawer').forEach(node => node.remove());
+  const legacy = root.matches?.('.studio-source-drawer') ? root : root.querySelector?.('.studio-source-drawer');
+  legacy?.remove();
 }
 
 sanitizeLegacySourceState();
@@ -154,15 +155,14 @@ document.addEventListener('click', event => {
   openOfficialSource(trigger);
 }, true);
 
-// Défense pour une session déjà ouverte avec l’ancien état en mémoire.
+// Défense ciblée pour une session déjà ouverte avec l’ancien état en mémoire.
+const legacyHost = document.querySelector('#view') || document.body;
 new MutationObserver(records => {
   for (const record of records) {
     for (const node of record.addedNodes) {
-      if (!(node instanceof Element)) continue;
-      if (node.matches?.('.studio-source-drawer')) node.remove();
-      else removeLegacyDrawer(node);
+      if (node instanceof Element) removeLegacyDrawer(node);
     }
   }
-}).observe(document.body, { childList: true, subtree: true });
+}).observe(legacyHost, { childList: true, subtree: true });
 
 removeLegacyDrawer();
