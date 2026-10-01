@@ -1,4 +1,4 @@
-/* PYTHON//FORGE — audit de mise en page Écrit Bac V1.31.1
+/* PYTHON//FORGE — audit de mise en page Écrit Bac V1.31.2
    Correctif ciblé : hiérarchie des contrôles, lisibilité, tactile, tablette et vidéoprojecteur. */
 
 #written-training-lab .written-filterbar{
@@ -56,6 +56,11 @@
   min-width:0;
 }
 
+/* Le défilement programmatique vers l'exercice guidé doit s'arrêter sous l'en-tête fixe. */
+#written-guided{
+  scroll-margin-top:104px;
+}
+
 /* Tablette : deux colonnes, la compétence prend une ligne entière au lieu d'être comprimée. */
 @media(max-width:920px){
   #written-training-lab .written-filterbar{
@@ -83,6 +88,9 @@
   }
   #written-training-lab .written-tabs button{
     flex:1 1 auto;
+  }
+  #written-guided{
+    scroll-margin-top:86px;
   }
 }
 
