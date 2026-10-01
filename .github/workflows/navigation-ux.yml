@@ -1,0 +1,24 @@
+name: Navigation UX Gate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  navigation-ux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - name: Syntax
+        run: |
+          node --check assets/bac-exam-studio-navigation.js
+          node --check scripts/validate-navigation-ux.mjs
+      - name: Modal, focus, scrolling and navigation gate
+        run: node scripts/validate-navigation-ux.mjs
