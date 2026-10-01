@@ -1,0 +1,15 @@
+/* Bac Exam Studio — Contrast Safety Gate V1.30
+   Chargé après les styles principaux pour garantir le contraste du mode clair. */
+html[data-theme="light"] #written-training-lab{
+  --w-accent:#07765f;
+}
+html[data-theme="light"] .bac-exam-studio-shell{
+  --studio-accent:#07765f;
+}
+html[data-theme="light"] #written-training-lab .written-tabs button.active,
+html[data-theme="light"] .bac-exam-studio-shell .btn.primary,
+html[data-theme="light"] .bac-exam-studio-shell .studio-pane-index,
+html[data-theme="light"] .bac-exam-studio-shell .studio-correction-step,
+html[data-theme="light"] .bac-exam-studio-shell .studio-mobile-tabs button.active{
+  color:#fff;
+}
