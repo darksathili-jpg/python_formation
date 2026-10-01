@@ -1,0 +1,24 @@
+name: Layout Quality Gate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  layout-quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - name: Syntax
+        run: |
+          node --check assets/bac-written-editorial-fix.js
+          node --check scripts/validate-layout-quality.mjs
+      - name: Responsive, wording and accessibility layout gate
+        run: node scripts/validate-layout-quality.mjs
