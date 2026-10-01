@@ -33,10 +33,13 @@ jobs:
           node --check assets/bac-exam-studio.js
           node --check scripts/validate-bac-written.mjs
           node --check scripts/validate-bac-exam-studio.mjs
+          node --check scripts/validate-bac-exam-contrast.mjs
       - name: Written training model, semantics and verified corpus
         run: node scripts/validate-bac-written.mjs
       - name: Bac Exam Studio pedagogy and performance budgets
         run: node scripts/validate-bac-exam-studio.mjs
+      - name: Bac Exam Studio numeric contrast gate
+        run: node scripts/validate-bac-exam-contrast.mjs
       - name: Preserve Bac Readiness gate
         run: node scripts/validate-bac-readiness.mjs
       - name: Preserve Recognition Evidence
