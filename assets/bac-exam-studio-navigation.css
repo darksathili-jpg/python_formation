@@ -3,6 +3,8 @@
 
 /* Mesure réelle de la barre globale fournie par bac-exam-studio-navigation.js. */
 :root{--app-topbar-height:72px}
+html{scroll-padding-top:calc(var(--app-topbar-height) + 12px)}
+#written-training-lab [id]{scroll-margin-top:calc(var(--app-topbar-height) + 72px)}
 
 /* Les onglets Écrit Bac restent accessibles pendant un exercice long. */
 #written-training-lab>.written-tabs{
