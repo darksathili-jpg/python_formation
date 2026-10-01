@@ -1,4 +1,4 @@
-const APP_VERSION = '1.27.0';
+const APP_VERSION = '1.28.0';
 const PYODIDE_VERSION = '314.0.7';
 const SHELL_CACHE = `python-forge-shell-v${APP_VERSION}`;
 const RUNTIME_CACHE = `python-forge-pyodide-${PYODIDE_VERSION}`;
@@ -27,10 +27,11 @@ const SHELL = [
   './assets/bac-readiness-ui.js?v=1.25.0',
   './assets/bac-readiness-evidence.js?v=1.26.0',
   './assets/bac-readiness.js',
-  './assets/bac-written-bootstrap.js?v=1.27.0',
+  './assets/bac-written-bootstrap.js?v=1.28.0',
   './assets/bac-written-ui.js',
   './assets/bac-written-corpus.js',
   './assets/bac-written-detailed.js',
+  './assets/bac-written-pdf-index.js',
   './assets/bac-written-2021.js',
   './assets/bac-written-2022.js',
   './assets/bac-written-2023.js',
