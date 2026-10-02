@@ -1,0 +1,24 @@
+name: Bac Mock UX Gate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  bac-mock-ux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - name: Syntax
+        run: |
+          node --check assets/bac-written-mock-fix.js
+          node --check scripts/validate-bac-written-mock-ux.mjs
+      - name: Bac mock subject navigation gate
+        run: node scripts/validate-bac-written-mock-ux.mjs
