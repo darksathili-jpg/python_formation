@@ -1,0 +1,51 @@
+/* PYTHON//FORGE — Sujet blanc UX V1.31.4 */
+
+#written-training-lab .written-mock-subject-hint{
+  display:block;
+  margin-top:.45rem;
+  color:var(--muted);
+  font-size:.74rem;
+  line-height:1.4;
+}
+#written-training-lab .written-mock-subject-hint[data-state="active"]{
+  color:color-mix(in srgb,var(--warn) 78%,var(--text));
+}
+#written-training-lab .written-mock-subject-hint[data-state="ended"]{
+  color:color-mix(in srgb,var(--accent) 72%,var(--text));
+}
+#written-training-lab .written-mock-session-actions{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:.7rem;
+  margin:.75rem 0 1rem;
+  padding:.75rem;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:color-mix(in srgb,var(--accent) 4%,var(--panel-solid));
+}
+#written-training-lab .written-mock-session-actions span{
+  flex:1 1 260px;
+  color:var(--muted);
+  font-size:.78rem;
+  line-height:1.45;
+}
+#written-training-lab [data-written-mock-subject]:disabled{
+  cursor:not-allowed;
+  opacity:.72;
+}
+
+@media(max-width:720px){
+  #written-training-lab .written-mock-session-actions{
+    align-items:stretch;
+    flex-direction:column;
+  }
+  #written-training-lab .written-mock-session-actions .btn{
+    width:100%;
+  }
+}
+
+@media print{
+  #written-training-lab .written-mock-session-actions,
+  #written-training-lab .written-mock-subject-hint{display:none!important}
+}
