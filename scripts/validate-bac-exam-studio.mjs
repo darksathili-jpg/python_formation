@@ -128,7 +128,7 @@ need(css.includes('@media print'), 'Mode impression absent');
 // Intégration et cache hors ligne.
 need(index.includes('assets/bac-exam-studio.js?v=1.31.0'), 'Moteur Studio V1.31 non chargé par index.html');
 need(index.includes('· V1.31 ·'), 'Version produit V1.31 absente du footer');
-need(sw.includes("APP_VERSION = '1.31.0'"), 'Service worker non basculé en V1.31.0');
+need(sw.includes("APP_VERSION = '1.32.0'"), 'Service worker non basculé en V1.32.0');
 for (const asset of ['bac-exam-studio-catalog.js','bac-exam-studio-pack-tools.js', ...modulePaths.map(file => file.replace('assets/',''))]) {
   need(sw.includes(asset), `Cache hors ligne incomplet : ${asset} absent`);
 }
