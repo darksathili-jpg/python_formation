@@ -1,0 +1,34 @@
+name: Bac Readiness Efficacy Gate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  efficacy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - name: Syntax
+        run: |
+          node --check assets/bac-readiness-efficacy-model.js
+          node --check assets/bac-readiness-efficacy.js
+          node --check scripts/validate-bac-readiness-efficacy.mjs
+      - name: Efficacy model
+        run: node scripts/validate-bac-readiness-efficacy.mjs
+      - name: Existing readiness regression
+        run: |
+          node scripts/validate-bac-readiness.mjs
+          node scripts/validate-bac-readiness-evidence.mjs
+      - name: Wiring
+        run: |
+          grep -q 'bac-readiness-efficacy.css?v=1.32.0' index.html
+          grep -q 'bac-readiness-efficacy.js?v=1.32.0' index.html
+          grep -q 'bac-readiness-efficacy-model.js' sw.js
