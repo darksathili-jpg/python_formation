@@ -57,11 +57,15 @@ function panelHTML() {
 function enhance() {
   const root = document.querySelector('#bac-readiness-gate');
   if (!root) return;
+  const signature = [localStorage.getItem(CORE_KEY)||'', localStorage.getItem(EVIDENCE_KEY)||'', localStorage.getItem(REFLECTION_KEY)||''].join('|');
   const existing = document.querySelector('#brg-efficacy');
+  if (existing?.dataset.signature === signature) return;
   if (existing) existing.remove();
   const actions = root.querySelector('.brg-actions:last-of-type');
   if (actions) actions.insertAdjacentHTML('beforebegin', panelHTML());
   else root.insertAdjacentHTML('beforeend', panelHTML());
+  const inserted = document.querySelector('#brg-efficacy');
+  if (inserted) inserted.dataset.signature = signature;
 }
 
 function queue() {
@@ -83,6 +87,11 @@ document.addEventListener('input', event => {
 
 document.addEventListener('change', queue);
 document.addEventListener('click', event => {
+  if (event.target.closest?.('[data-brg-reset-all]')) {
+    localStorage.removeItem(REFLECTION_KEY);
+    setTimeout(queue, 80);
+    return;
+  }
   if (event.target.closest?.('[data-brg-run], [data-brg-finish], [data-brg-open], [data-brg-criterion], [data-brg-dialogue]')) setTimeout(queue, 80);
 });
 window.addEventListener('hashchange', queue);
