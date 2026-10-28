@@ -1,4 +1,4 @@
-const APP_VERSION = '1.31.0';
+const APP_VERSION = '1.32.0';
 const PYODIDE_VERSION = '314.0.7';
 const SHELL_CACHE = `python-forge-shell-v${APP_VERSION}`;
 const RUNTIME_CACHE = `python-forge-pyodide-${PYODIDE_VERSION}`;
@@ -15,7 +15,7 @@ const SHELL = [
   './assets/branding.css?v=1.17.0',
   './assets/visual-contrast.css?v=1.17.0',
   './assets/exercise-brief.css?v=1.17.0',
-  './assets/bac-readiness.css?v=1.25.0',
+  './assets/bac-readiness.css?v=1.25.0',\n  './assets/bac-readiness-efficacy.css?v=1.32.0',
   './assets/bac-written.css?v=1.29.0',
   './assets/bac-written-layout-fix.css?v=1.31.2',
   './assets/bac-written-mock-fix.css?v=1.31.4',
@@ -31,7 +31,7 @@ const SHELL = [
   './assets/terminale-transversal-ui.js?v=1.24.0',
   './assets/terminale-transversal.js',
   './assets/bac-readiness-ui.js?v=1.25.0',
-  './assets/bac-readiness-evidence.js?v=1.26.0',
+  './assets/bac-readiness-evidence.js?v=1.26.0',\n  './assets/bac-readiness-efficacy-model.js',\n  './assets/bac-readiness-efficacy.js?v=1.32.0',
   './assets/bac-readiness.js',
   './assets/bac-written-editorial-fix.js?v=1.31.2',
   './assets/bac-written-bootstrap.js?v=1.29.0',
