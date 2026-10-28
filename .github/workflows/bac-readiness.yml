@@ -21,12 +21,17 @@ jobs:
           node --check assets/bac-readiness.js
           node --check assets/bac-readiness-ui.js
           node --check assets/bac-readiness-evidence.js
+          node --check assets/bac-readiness-efficacy-model.js
+          node --check assets/bac-readiness-efficacy.js
           node --check scripts/validate-bac-readiness.mjs
           node --check scripts/validate-bac-readiness-evidence.mjs
+          node --check scripts/validate-bac-readiness-efficacy.mjs
       - name: Bac Readiness model and reference solutions
         run: node scripts/validate-bac-readiness.mjs
       - name: Recognition evidence gate
         run: node scripts/validate-bac-readiness-evidence.mjs
+      - name: Efficacy gate V1.32
+        run: node scripts/validate-bac-readiness-efficacy.mjs
       - name: Existing exercise corpus
         run: node scripts/validate-exercises.mjs
       - name: Terminale transversal regression gate
